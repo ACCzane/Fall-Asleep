@@ -15,9 +15,18 @@
                     "initialStateCheck": true
                 },
                 {
-                    "name": "Interact",
+                    "name": "Hide",
                     "type": "Button",
                     "id": "b735467a-2e39-4581-aa38-6382d90e3913",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Mess",
+                    "type": "Button",
+                    "id": "1f1f1992-f87b-40a0-901f-db20899c561a",
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
@@ -39,7 +48,7 @@
                 {
                     "name": "up",
                     "id": "b89f0f40-0e71-48d6-ab95-b4982f57205d",
-                    "path": "",
+                    "path": "<Keyboard>/w",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -50,7 +59,7 @@
                 {
                     "name": "down",
                     "id": "a115402f-237b-4dde-ab3b-dadd922d6a43",
-                    "path": "",
+                    "path": "<Keyboard>/s",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -61,7 +70,7 @@
                 {
                     "name": "left",
                     "id": "26024c6e-aef7-48d6-8414-d217fae71959",
-                    "path": "",
+                    "path": "<Keyboard>/a",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -72,7 +81,7 @@
                 {
                     "name": "right",
                     "id": "c4a2e4ce-216e-4cf4-aac3-7425c63ce02b",
-                    "path": "",
+                    "path": "<Keyboard>/d",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -87,7 +96,18 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Interact",
+                    "action": "Hide",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "300926a4-157c-470d-8fed-acb4595b7145",
+                    "path": "<Keyboard>/q",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Mess",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
