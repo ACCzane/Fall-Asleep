@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 3556413268130586261}
   - component: {fileID: 2521678366778577642}
   - component: {fileID: 8263324434243425524}
+  - component: {fileID: 2883871870977093079}
   m_Layer: 10
   m_Name: Ghost
   m_TagString: Untagged
@@ -120,6 +121,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sightTransform: {fileID: 2946661380298246604}
   roundingView: {fileID: 5524892312527711337}
+--- !u!114 &2883871870977093079
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2378278874528659785}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 84892f9cfacaf044cb60ebb1e81fb486, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sightCheck: {fileID: 8851053188755381629}
 --- !u!1 &2740585614301988436
 GameObject:
   m_ObjectHideFlags: 0

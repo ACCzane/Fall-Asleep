@@ -9,6 +9,8 @@ public class SightCheck : MonoBehaviour
     [SerializeField] private Transform sightStart;
     [SerializeField] private LayerMask layerMask;
 
+    public bool FoundPlayer{get; private set;} =  false;
+
     private void Awake() {
         polygonCollider = GetComponent<PolygonCollider2D>();
     }
@@ -30,7 +32,11 @@ public class SightCheck : MonoBehaviour
                 // 检查射线是否击中玩家
                 if (hit.collider != null && hit.collider.CompareTag("Player")) {
                     Debug.Log("检测到玩家");
-                    return; // 找到玩家后立即返回
+
+                    FoundPlayer = true;
+                    EventHandler.CallAttack(hit.collider.GetComponent<Transform>());
+
+                    return;
                 }
 
             }
