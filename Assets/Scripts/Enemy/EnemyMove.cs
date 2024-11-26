@@ -7,7 +7,7 @@ public class EnemyMove : MonoBehaviour
 
     [SerializeField] private RotateSight rotateSight;
 
-    [SerializeField] private MovePath movePath;
+    private MovePath movePath;
     [SerializeField] private float enemySpeed;
 
     private int currentHeadingNodeIndex;
@@ -16,26 +16,17 @@ public class EnemyMove : MonoBehaviour
     private bool reverse;
     private Vector2 faceDirVec2;
     private float faceDirZEulerAngle;
-    private bool isMoving = true;
+    private bool isMoving = false;
     
-
-
-    private void Start() {
-        //获取路径
-        posNodes = movePath.GetPos();
-        totalPos = posNodes.Count;
-        reverse = false;
-        transform.position = posNodes[0];
-        currentHeadingNodeIndex = 1;
-
-        faceDirVec2 = posNodes[1] - posNodes[0];
-        faceDirZEulerAngle = Mathf.Atan2(faceDirVec2.y, faceDirVec2.x) * Mathf.Rad2Deg;
-        LookAround();
-    }
+    private Coroutine rotationCorotine;
 
     private void Update() {
         if(isMoving)
             Move();
+    }
+
+    public void SetMovPath(MovePath movePath){
+        this.movePath = movePath;
     }
 
     private void Move() {
@@ -85,10 +76,10 @@ public class EnemyMove : MonoBehaviour
 
 
     private void LookAround(){
-        StartCoroutine(LookingAround());
+        rotationCorotine = StartCoroutine(LookAroundAsync());
     }
 
-    private IEnumerator LookingAround(){
+    private IEnumerator LookAroundAsync(){
         isMoving = false;
 
         yield return rotateSight.LookingAround();
@@ -96,6 +87,24 @@ public class EnemyMove : MonoBehaviour
         yield return rotateSight.RotateToRightZValue(faceDirZEulerAngle,2f);
 
         isMoving = true;
+    }
+
+    public void RespawnSelf(){
+        //获取路径
+        posNodes = movePath.GetPos();
+        totalPos = posNodes.Count;
+        reverse = false;
+        transform.position = posNodes[0];
+        currentHeadingNodeIndex = 1;
+
+        faceDirVec2 = posNodes[1] - posNodes[0];
+        faceDirZEulerAngle = Mathf.Atan2(faceDirVec2.y, faceDirVec2.x) * Mathf.Rad2Deg;
+        LookAround();
+    }
+
+    private void OnDestroy() {
+        if(rotationCorotine != null)
+            StopCoroutine(rotationCorotine);
     }
 
 }

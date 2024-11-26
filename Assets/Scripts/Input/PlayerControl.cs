@@ -7,6 +7,7 @@ public class PlayerControl : MonoBehaviour
 
     //移动
     private Vector2 playerMovement;
+    private Vector2 previousPlayerMovement;
     private bool isHiding;
 
     //交互
@@ -55,8 +56,18 @@ public class PlayerControl : MonoBehaviour
     private void MovePlayer(){
         if(isHiding){return;}
 
+        //更改朝向
+        if(playerMovement.x < -0.5){
+            transform.localScale = new Vector3(Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
+        }
+        if(playerMovement.x > 0.5){
+            transform.localScale = new Vector3(-Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
+        }
+
         Vector3 moveVector = new Vector3(playerMovement.x, playerMovement.y, 0) * playerSpeed * Time.deltaTime;
         transform.Translate(moveVector, Space.World);
+
+        previousPlayerMovement = playerMovement;
     }
 
     private void OnHideButtonPerformed(UnityEngine.InputSystem.InputAction.CallbackContext context)

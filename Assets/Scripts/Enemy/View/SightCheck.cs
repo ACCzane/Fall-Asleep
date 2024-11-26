@@ -30,6 +30,7 @@ public class SightCheck : MonoBehaviour
                 // 检查射线是否击中玩家
                 if (hit.collider != null && hit.collider.CompareTag("Player")) {
                     Debug.Log("检测到玩家");
+                    FindPlayer();
                     return; // 找到玩家后立即返回
                 }
 
@@ -37,5 +38,8 @@ public class SightCheck : MonoBehaviour
         }
     }
 
+    private void FindPlayer(){
+        Destroy(gameObject);
+    }
     
 }
