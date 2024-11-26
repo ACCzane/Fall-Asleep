@@ -11,8 +11,7 @@ public class PlayerControl : MonoBehaviour
     private bool isHiding;
 
     //交互
-    public bool canPressE;     //E：与书柜交互，躲进去
-    public bool canPressQ;      //Q：与配电箱交互，摧毁配电箱
+    public InteractType currentActivatedInteractType;     //E：与物体交互
 
     [Header("参数")]
     [SerializeField] private float playerSpeed;
@@ -24,25 +23,23 @@ public class PlayerControl : MonoBehaviour
     private void OnEnable() {
         playerInput.Enable();
 
-        playerInput.Player.Hide.performed += OnHideButtonPerformed;
-        playerInput.Player.Mess.performed += OnMessButtonPerformed;
+        playerInput.Player.Interact.performed += OnInteractButtonPressed;
 
-        EventHandler.Hide += OnHide;
+        EventHandler.Interact += OnInteract;
     }
 
     private void OnDisable() {
         playerInput.Disable();
 
-        playerInput.Player.Hide.performed -= OnHideButtonPerformed;
-        playerInput.Player.Mess.performed -= OnMessButtonPerformed;
+        playerInput.Player.Interact.performed -= OnInteractButtonPressed;
 
-        EventHandler.Hide += OnHide;
+        EventHandler.Interact += OnInteract;
     }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        canPressE = false;
+        currentActivatedInteractType = InteractType.Null;
     }
 
     // Update is called once per frame
@@ -70,23 +67,20 @@ public class PlayerControl : MonoBehaviour
         previousPlayerMovement = playerMovement;
     }
 
-    private void OnHideButtonPerformed(UnityEngine.InputSystem.InputAction.CallbackContext context)
+    private void OnInteractButtonPressed(UnityEngine.InputSystem.InputAction.CallbackContext context)
     {
-        if(!canPressE){return;}
-
-        EventHandler.CallHide();
-
+        if(currentActivatedInteractType == InteractType.Null){
+            return;
+        }
+        if(currentActivatedInteractType == InteractType.Hide){
+            EventHandler.CallInteract(InteractType.Hide);
+        }
     }
 
-    private void OnMessButtonPerformed(UnityEngine.InputSystem.InputAction.CallbackContext context)
+    private void OnInteract(InteractType interactType)
     {
-        if(!canPressQ){return;}
-
-        EventHandler.CallMess();
-    }
-
-    private void OnHide()
-    {
-        isHiding = !isHiding;
+        if(interactType == InteractType.Hide){
+            isHiding = !isHiding;
+        }
     }
 }

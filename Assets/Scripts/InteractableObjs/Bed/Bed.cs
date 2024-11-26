@@ -1,12 +1,16 @@
 using UnityEngine;
 
-public class Hider : MonoBehaviour
+public class Bed : MonoBehaviour
 {
     // private Collider2D collider2D;
 
     [Header("参数")]
     [SerializeField] private Vector2 inPos;
     [SerializeField] private Vector2 outPos;
+
+    [SerializeField] private SpriteRenderer bedSpr;
+    [SerializeField] private Sprite emptyBed;
+    [SerializeField] private Sprite playerInBed;
 
     private void Awake() {
         // collider2D = GetComponent<Collider2D>();
@@ -16,7 +20,7 @@ public class Hider : MonoBehaviour
         if(other.tag == "Player"){
             //玩家可以按键进入
             other.GetComponent<Hide>().TurnHintButton(true);
-            other.GetComponent<PlayerControl>().currentActivatedInteractType = InteractType.Hide;
+            other.GetComponent<PlayerControl>().currentActivatedInteractType = InteractType.Sleep;
 
             //玩家注册进入位置和退出位置
             other.GetComponent<Hide>().SetPos(

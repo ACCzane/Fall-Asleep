@@ -15,18 +15,9 @@
                     "initialStateCheck": true
                 },
                 {
-                    "name": "Hide",
+                    "name": "Interact",
                     "type": "Button",
                     "id": "b735467a-2e39-4581-aa38-6382d90e3913",
-                    "expectedControlType": "",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "Mess",
-                    "type": "Button",
-                    "id": "1f1f1992-f87b-40a0-901f-db20899c561a",
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
@@ -96,18 +87,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Hide",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "300926a4-157c-470d-8fed-acb4595b7145",
-                    "path": "<Keyboard>/q",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Mess",
+                    "action": "Interact",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

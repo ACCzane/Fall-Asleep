@@ -16,14 +16,14 @@ public class Hide : MonoBehaviour, IInteractAction
     public bool IsHiding{get; private set;}
 
     private void OnEnable() {
-        EventHandler.Hide += OnHide;
+        EventHandler.Interact += OnHide;
     }
 
     private void OnDisable() {
-        EventHandler.Hide -= OnHide;
+        EventHandler.Interact -= OnHide;
     }
 
-    private void OnHide()
+    private void OnHide(InteractType interactType)
     {
         if(IsHiding){
             GetOut();
