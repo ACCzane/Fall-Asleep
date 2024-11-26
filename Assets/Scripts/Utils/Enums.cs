@@ -6,3 +6,10 @@ public enum FaceDir
     down,
     left
 }
+
+public enum EnemyState{
+    Move,
+    Alert,
+    ResetView,
+    Found
+}

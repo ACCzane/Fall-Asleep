@@ -17,11 +17,10 @@ public class MoveState : IStateBase
 
     public void Exit(Enemy enemy)
     {
-        if(enemy.currentHeadingNodeIndex == enemy.PosNodes.Count-1)
-            enemy.reverse = -1;
-        else if(enemy.currentHeadingNodeIndex == 0)
-            enemy.reverse = 1;
+        if(enemy.currentHeadingNodeIndex == enemy.PosNodes.Count-1){enemy.reverse = -1;}
+        else if(enemy.currentHeadingNodeIndex == 0){enemy.reverse = 1;}
 
+        Debug.Log(enemy.currentHeadingNodeIndex + " + " + enemy.reverse + " = " + (enemy.currentHeadingNodeIndex+enemy.reverse));
         enemy.currentHeadingNodeIndex += enemy.reverse;
     }
 

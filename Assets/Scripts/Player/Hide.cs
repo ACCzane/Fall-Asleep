@@ -8,7 +8,7 @@ public class Hide : MonoBehaviour, IInteractAction
     [SerializeField] private SpriteRenderer hideButtonRenderer;
 
     [SerializeField] private Sprite hideButtonSprite;
-    [SerializeField] private Sprite hidingSprite;
+    // [SerializeField] private Sprite hidingSprite;
 
     private Vector2 hideInPos;
     private Vector2 getOutPos;
@@ -38,7 +38,8 @@ public class Hide : MonoBehaviour, IInteractAction
         playerBodySpriteRenderer.enabled = false;
 
         IsHiding = true;
-        hideButtonRenderer.sprite = hidingSprite;
+        // hideButtonRenderer.sprite = hidingSprite;
+        hideButtonRenderer.sprite = null;
     }
 
     public void GetOut(){

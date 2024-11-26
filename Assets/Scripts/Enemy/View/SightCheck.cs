@@ -9,16 +9,20 @@ public class SightCheck : MonoBehaviour
     [SerializeField] private Transform sightStart;
     [SerializeField] private LayerMask layerMask;
 
+    [SerializeField] private Enemy enemy;
+
     private void Awake() {
         polygonCollider = GetComponent<PolygonCollider2D>();
     }
 
-    private void OnTriggerEnter2D(Collider2D other) {
+    private void OnTriggerStay2D(Collider2D other) {
         if (other.CompareTag("Player")) {
+            //玩家只有先进入视锥的碰撞体，才会执行射线检测
             Debug.Log("碰撞");
             CheckPlayerVisibility(other);
         }
     }
+
 
     private void CheckPlayerVisibility(Collider2D player) {
         if (!player.GetComponent<Hide>().IsHiding) { // 检测玩家是否隐藏
@@ -30,16 +34,19 @@ public class SightCheck : MonoBehaviour
                 // 检查射线是否击中玩家
                 if (hit.collider != null && hit.collider.CompareTag("Player")) {
                     Debug.Log("检测到玩家");
-                    FindPlayer();
-                    return; // 找到玩家后立即返回
+                    FindPlayer(hit.transform);
+                    return; // 找到玩家后立即返回，跳出循环
                 }
 
             }
         }
     }
 
-    private void FindPlayer(){
-        Destroy(gameObject);
+    private void FindPlayer(Transform transform){
+        //enemy注册Player的Transform
+        enemy.TargetPlayer(transform);
+        //enemy通知stateMachine进入Found状态
+        enemy.ChangeState(EnemyState.Found);
     }
     
 }

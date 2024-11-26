@@ -18,9 +18,6 @@ public class ResetViewState : IStateBase
         float angle = Mathf.Atan2(targetDirection.y, targetDirection.x) * Mathf.Rad2Deg; // 将弧度转换为角度
         TargetRotation = Quaternion.Euler(0, 0, angle); // 创建目标旋转
 
-
-        Debug.Log(TargetRotation.eulerAngles);
-        Debug.Log(enemy.View.rotation.eulerAngles);
     }
 
     public void Exit(Enemy enemy)

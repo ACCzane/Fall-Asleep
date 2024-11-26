@@ -38,7 +38,7 @@ public class AlertState : IStateBase
         finalRotation = Quaternion.Euler(0, 0, angle);     //创建最终目标旋转
 
         currentRotationIndex = 0;
-        RotationMax = zAngles.Count - 1;
+        RotationMax = zAngles.Count;
 
         //更新第一个旋转
         currentRotation = Quaternion.Euler(0,0,zAngles[currentRotationIndex]); 
