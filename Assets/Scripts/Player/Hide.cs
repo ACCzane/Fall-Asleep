@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Hide : MonoBehaviour, IInteractAction
+public class Hide : MonoBehaviour
 {
 
     [Header("引用")]
@@ -16,14 +16,14 @@ public class Hide : MonoBehaviour, IInteractAction
     public bool IsHiding{get; private set;}
 
     private void OnEnable() {
-        EventHandler.Interact += OnHide;
+        EventHandler.Hide += OnHide;
     }
 
     private void OnDisable() {
-        EventHandler.Interact -= OnHide;
+        EventHandler.Hide -= OnHide;
     }
 
-    private void OnHide(InteractType interactType)
+    private void OnHide()
     {
         if(IsHiding){
             GetOut();

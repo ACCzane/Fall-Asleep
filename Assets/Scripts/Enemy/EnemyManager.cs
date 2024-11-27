@@ -6,12 +6,14 @@ public class EnemyManager : MonoBehaviour
 {
     [SerializeField] private List<EnemySpawner> enemySpawners;
 
-    [SerializeField] private Button button;
-
-    private void OnEnable() {
+    public void GenerateEnemies_Day(){
         foreach (var enemySpawner in enemySpawners)
         {
-            button.onClick.AddListener(enemySpawner.GenEnemy);
+            enemySpawner.GenEnemy();
         }
+    }
+
+    public void GenerateEnemies_Night(){
+
     }
 }

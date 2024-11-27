@@ -73,8 +73,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -1249477775
+  m_SortingLayer: 1
   m_SortingOrder: 100
   m_Sprite: {fileID: 21300000, guid: 71655c47de11bd04ba64bd53053f38bb, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -100,6 +100,7 @@ GameObject:
   - component: {fileID: 1974946637960674462}
   - component: {fileID: 3919247210697801404}
   - component: {fileID: 7816410318191258968}
+  - component: {fileID: 5381009170670294691}
   m_Layer: 11
   m_Name: Player
   m_TagString: Player
@@ -200,8 +201,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4211feadaefeba84dad3dce4288efb3e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  canPressE: 0
-  canPressQ: 0
+  currentActivatedInteractType: 0
   playerSpeed: 5
 --- !u!114 &7816410318191258968
 MonoBehaviour:
@@ -218,6 +218,21 @@ MonoBehaviour:
   playerBodySpriteRenderer: {fileID: 3027979882971759235}
   hideButtonRenderer: {fileID: 7545026801177109452}
   hideButtonSprite: {fileID: 21300000, guid: 71655c47de11bd04ba64bd53053f38bb, type: 3}
+--- !u!114 &5381009170670294691
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2218031720137129576}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32775c535c9c77c4f82e4b9e3848c796, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerBodySpriteRenderer: {fileID: 3027979882971759235}
+  sleepButtonRenderer: {fileID: 7545026801177109452}
+  sleepButtonSprite: {fileID: 21300000, guid: c72372e8102538e4ab9e2f72d0f598de, type: 3}
 --- !u!1 &6593923940526057457
 GameObject:
   m_ObjectHideFlags: 0

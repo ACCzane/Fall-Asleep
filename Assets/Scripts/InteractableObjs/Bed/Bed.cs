@@ -16,14 +16,22 @@ public class Bed : MonoBehaviour
         // collider2D = GetComponent<Collider2D>();
     }
 
+    private void OnEnable() {
+        EventHandler.Sleep += OnSleep;
+    }
+
+    private void OnDisable() {
+        EventHandler.Sleep -= OnSleep;
+    }
+
     private void OnTriggerEnter2D(Collider2D other) {
         if(other.tag == "Player"){
             //玩家可以按键进入
-            other.GetComponent<Hide>().TurnHintButton(true);
+            other.GetComponent<Sleep>().TurnHintButton(true);
             other.GetComponent<PlayerControl>().currentActivatedInteractType = InteractType.Sleep;
 
             //玩家注册进入位置和退出位置
-            other.GetComponent<Hide>().SetPos(
+            other.GetComponent<Sleep>().SetPos(
                 new Vector2(transform.position.x, transform.position.y) + inPos,
                 new Vector2(transform.position.x, transform.position.y) + outPos
             );
@@ -32,9 +40,14 @@ public class Bed : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D other) {
         if(other.tag == "Player"){
-            other.GetComponent<Hide>().TurnHintButton(false);
+            other.GetComponent<Sleep>().TurnHintButton(false);
             other.GetComponent<PlayerControl>().currentActivatedInteractType = InteractType.Null;
         }
+    }
+
+    private void OnSleep()
+    {
+        bedSpr.sprite = playerInBed;
     }
 
     private void OnDrawGizmosSelected() {

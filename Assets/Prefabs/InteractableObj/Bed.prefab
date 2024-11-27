@@ -9,8 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8958185705066833837}
-  - component: {fileID: 9183512602488985413}
   - component: {fileID: 2890183429528580166}
+  - component: {fileID: 7195106037790159186}
   m_Layer: 0
   m_Name: Bed
   m_TagString: Untagged
@@ -34,20 +34,6 @@ Transform:
   - {fileID: 3409225413658118907}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &9183512602488985413
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 138485664781654585}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e886388c96df98d4aa5ca4db975071b1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  inPos: {x: 0, y: 0}
-  outPos: {x: 0, y: 0}
 --- !u!61 &2890183429528580166
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -78,7 +64,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
@@ -94,6 +80,23 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 3.9397793, y: 3.0746224}
   m_EdgeRadius: 0
+--- !u!114 &7195106037790159186
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 138485664781654585}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b45a07c22bd3d74ab0d66bc2ab63b19, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inPos: {x: 0, y: 0}
+  outPos: {x: 0, y: 0}
+  bedSpr: {fileID: 2334356609859387310}
+  emptyBed: {fileID: 21300000, guid: 306eebb950b58d74f89731c4199b923f, type: 3}
+  playerInBed: {fileID: 21300000, guid: 58f0ffbae06ae79498a4b1cf1978f43e, type: 3}
 --- !u!1 &8122111873626672906
 GameObject:
   m_ObjectHideFlags: 0

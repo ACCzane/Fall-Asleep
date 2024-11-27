@@ -8,13 +8,18 @@ public static class EventHandler
         Interact?.Invoke(interactType);
     }
 
-    public static Action Attack;
-    public static void CallAttack(){
-        Attack?.Invoke();
+    public static Action Hide;
+    public static void CallHide(){
+        Hide?.Invoke();
     }
 
     public static Action Sleep;
     public static void CallSleep(){
         Sleep?.Invoke();
+    }
+
+    public static Action Attack;
+    public static void CallAttack(){
+        Attack?.Invoke();
     }
 }

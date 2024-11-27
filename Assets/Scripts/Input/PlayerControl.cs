@@ -9,6 +9,7 @@ public class PlayerControl : MonoBehaviour
     private Vector2 playerMovement;
     private Vector2 previousPlayerMovement;
     private bool isHiding;
+    private bool isSleeping;
 
     //交互
     public InteractType currentActivatedInteractType;     //E：与物体交互
@@ -25,7 +26,7 @@ public class PlayerControl : MonoBehaviour
 
         playerInput.Player.Interact.performed += OnInteractButtonPressed;
 
-        EventHandler.Interact += OnInteract;
+        EventHandler.Sleep += OnSleep;
     }
 
     private void OnDisable() {
@@ -33,7 +34,7 @@ public class PlayerControl : MonoBehaviour
 
         playerInput.Player.Interact.performed -= OnInteractButtonPressed;
 
-        EventHandler.Interact += OnInteract;
+        EventHandler.Sleep -= OnSleep;
     }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -51,7 +52,7 @@ public class PlayerControl : MonoBehaviour
     }
 
     private void MovePlayer(){
-        if(isHiding){return;}
+        if(isHiding || isSleeping){return;}
 
         //更改朝向
         if(playerMovement.x < -0.5){
@@ -73,14 +74,15 @@ public class PlayerControl : MonoBehaviour
             return;
         }
         if(currentActivatedInteractType == InteractType.Hide){
-            EventHandler.CallInteract(InteractType.Hide);
+            EventHandler.CallHide();
+        }
+        if(currentActivatedInteractType == InteractType.Sleep){
+            EventHandler.CallSleep();
         }
     }
 
-    private void OnInteract(InteractType interactType)
+    private void OnSleep()
     {
-        if(interactType == InteractType.Hide){
-            isHiding = !isHiding;
-        }
+        isHiding = !isHiding;           //玩家可以按E进入，也可以按E退出
     }
 }
