@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 7981421809170921817}
   - component: {fileID: 8263324434243425524}
-  - component: {fileID: 6135776536034616364}
   - component: {fileID: 3257412505922280738}
   m_Layer: 10
   m_Name: Ghost
@@ -48,27 +47,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sightTransform: {fileID: 2946661380298246604}
-  roundingView: {fileID: 5524892312527711337}
---- !u!114 &6135776536034616364
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2378278874528659785}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 951629be67adabb4186fe382b3fac74e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  spr: {fileID: 2219823495939161131}
-  enemySpeed: 5
-  currentHeadingNodeIndex: 0
-  reverse: 0
-  view: {fileID: 2946661380298246604}
-  roundingView: {fileID: 5524892312527711337}
-  rotateSpeed: 20
-  impulseSource: {fileID: 3257412505922280738}
+  roundingView: {fileID: 0}
 --- !u!114 &3257412505922280738
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -203,7 +182,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d538e96dcfac5d42b1e1c363314c18c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemy: {fileID: 6135776536034616364}
+  enemy: {fileID: 0}
 --- !u!1 &2740585614301988436
 GameObject:
   m_ObjectHideFlags: 0
@@ -424,9 +403,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2946661380298246604}
   - component: {fileID: 1675455871305554565}
-  - component: {fileID: 6821227598786531130}
   - component: {fileID: 8851053188755381629}
-  - component: {fileID: 5524892312527711337}
   m_Layer: 10
   m_Name: View
   m_TagString: Untagged
@@ -503,42 +480,6 @@ PolygonCollider2D:
       - {x: 4, y: 1.2}
       - {x: 4, y: -1.2}
   m_UseDelaunayMesh: 0
---- !u!58 &6821227598786531130
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3224514619896148071}
-  m_Enabled: 0
-  serializedVersion: 3
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_CompositeOperation: 0
-  m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
-  m_Radius: 1
 --- !u!114 &8851053188755381629
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -561,24 +502,7 @@ MonoBehaviour:
   layerMask:
     serializedVersion: 2
     m_Bits: 6144
-  enemy: {fileID: 6135776536034616364}
---- !u!114 &5524892312527711337
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3224514619896148071}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c3494c3aa732dd947870fab12ece545d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  eulerAngles_z:
-  - 0
-  - 90
-  - 120
-  - 280
+  enemy: {fileID: 0}
 --- !u!1 &4084106684669757806
 GameObject:
   m_ObjectHideFlags: 0

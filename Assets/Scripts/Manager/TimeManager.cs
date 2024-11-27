@@ -11,9 +11,7 @@ public class TimeManager : MonoBehaviour
     private int countdown;
 
     private void Update() {
-
-        Debug.Log(previousCountdown + "  " + countdown);
-
+        
         if(isCounting){
             timeCounter += Time.deltaTime;
             countdown = GetCountdown();

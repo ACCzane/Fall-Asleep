@@ -1,7 +1,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RoundingView : MonoBehaviour
+[CreateAssetMenu(menuName = "GhostAssets/RoundingView")]
+public class RoundingView : ScriptableObject
 {
     public List<float> eulerAngles_z = new List<float>();
 

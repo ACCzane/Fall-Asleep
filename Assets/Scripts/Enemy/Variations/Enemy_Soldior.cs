@@ -39,7 +39,7 @@ public class Enemy_Soldior : Enemy
     private void Update()
     {
         stateMachine.Update(); // 更新状态
-        Debug.Log(stateMachine.currentState);
+        // Debug.Log(stateMachine.currentState);
         //入口状态
         if(stateMachine.currentState is ResetViewState resetViewState
             && Quaternion.Angle(view.rotation , resetViewState.TargetRotation) < 0.1f){
@@ -52,8 +52,17 @@ public class Enemy_Soldior : Enemy
         if(stateMachine.currentState is MoveState
             && Vector2.Distance(transform.position, PosNodes[currentHeadingNodeIndex])<0.1f){
                 //如果目前正在巡逻且到达了目标点
-                //则进入警戒状态
-                ChangeState(EnemyState.Alert);
+                //则概率进入警戒状态
+                
+                float randomValue = Random.Range(0f, 1f);
+                if(randomValue<0.3f)
+                {
+                    ChangeState(EnemyState.Alert);
+                }
+                else
+                {
+                    ChangeState(EnemyState.Move);
+                }
         }
 
         if(stateMachine.currentState is AlertState){
@@ -91,16 +100,12 @@ public class Enemy_Soldior : Enemy
 
         SetMovePath(movePath);
 
-        transform.position = PosNodes[0];
-
         stateMachine = new EnemyStateMachine(this);
+
+        transform.position = PosNodes[0];
         
         currentHeadingNodeIndex = 1;                //currentHeadingNode决定了往哪走，在MoveState中的Enter读取本文件的currentHeadingNode
         ChangeState(EnemyState.ResetView); // 初始状态
-    }
-
-    public void TargetPlayer(Transform transform){
-        PlayerTransform = transform;
     }
 
 }

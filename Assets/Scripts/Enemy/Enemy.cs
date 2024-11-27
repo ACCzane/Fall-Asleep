@@ -3,7 +3,7 @@ using UnityEngine;
 
 public abstract class Enemy : MonoBehaviour
 {
-    protected EnemyStateMachine stateMachine;
+    protected EnemyStateMachine stateMachine;   //初始化在具体类中实现!
     [SerializeField] protected SpriteRenderer spr;
     public SpriteRenderer Spr{
         get{
@@ -73,6 +73,10 @@ public abstract class Enemy : MonoBehaviour
             stateMachine.ChangeState(new FoundState());
             return;
         }
+    }
+
+    public void TargetPlayer(Transform transform){
+        PlayerTransform = transform;
     }
 
     #region CinemachineImpulse

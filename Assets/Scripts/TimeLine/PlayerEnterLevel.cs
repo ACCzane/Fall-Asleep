@@ -27,7 +27,7 @@ public class PlayerEnterLevel : MonoBehaviour
     }
 
     public void UpdatePlayerPos(){
-        if(Vector3.Distance(playerControl.transform.position, entryPos_2) < 0.01f){
+        if(Vector3.Distance(playerControl.transform.position, entryPos_2) < 0.1f){
             isPlayerEntering = false;
         }
        

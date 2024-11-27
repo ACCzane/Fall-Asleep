@@ -4,34 +4,22 @@ using UnityEngine;
 
 public class Enemy_Guard : Enemy
 {
-    // private EnemyStateMachine stateMachine;
 
-    // [SerializeField] private SpriteRenderer spr;
-    // public SpriteRenderer Spr{
-    //     get{
-    //         return spr;
-    //     } 
-    //     private set{
-    //         spr = value;
-    //     }
-    // }
-
-
-    // #region 重生相关
-    // private EnemySpawner enemySpawner;
-    // #endregion
+    [SerializeField] private RoundingView roundingView;
 
     private void Start()
     {
+        stateMachine = new EnemyStateMachine(this);
 
+        Initialize();
     }
 
     private void Update()
     {
         stateMachine.Update(); // 更新状态
         Debug.Log(stateMachine.currentState);
-        //入口状态
-        
+
+        //入口状态：Alert(Loop)
 
         //出口状态
         if(stateMachine.currentState is FoundState){
@@ -45,10 +33,8 @@ public class Enemy_Guard : Enemy
         }
     }
 
-    public void Initialize(MovePath movePath, EnemySpawner enemySpawner){
-
-        
-        ChangeState(EnemyState.Alert); // 初始状态
+    public void Initialize(){
+        stateMachine.ChangeState(new AlertState(roundingView.eulerAngles_z));
     }
 
     public void TargetPlayer(Transform transform){

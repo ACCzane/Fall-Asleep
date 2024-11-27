@@ -35,6 +35,7 @@ public class PlayerControl : MonoBehaviour
         playerInput.Player.Interact.performed += OnInteractButtonPressed;
 
         EventHandler.Sleep += OnSleep;
+        EventHandler.Hide += OnHide;
     }
 
     private void OnDisable() {
@@ -43,6 +44,7 @@ public class PlayerControl : MonoBehaviour
         playerInput.Player.Interact.performed -= OnInteractButtonPressed;
 
         EventHandler.Sleep -= OnSleep;
+        EventHandler.Hide -= OnHide;
     }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -92,5 +94,10 @@ public class PlayerControl : MonoBehaviour
     private void OnSleep()
     {
         isHiding = !isHiding;           //玩家可以按E进入，也可以按E退出
+    }
+
+    private void OnHide()
+    {
+        isHiding = !isHiding;
     }
 }
