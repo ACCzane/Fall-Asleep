@@ -70,7 +70,6 @@ public class Enemy : MonoBehaviour
     private void Update()
     {
         stateMachine.Update(); // 更新状态
-        Debug.Log(currentHeadingNodeIndex);
         Debug.Log(stateMachine.currentState);
         //入口状态
         if(stateMachine.currentState is ResetViewState resetViewState

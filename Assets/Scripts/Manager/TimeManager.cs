@@ -2,15 +2,43 @@ using UnityEngine;
 
 public class TimeManager : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
+    private TimePeriod time;
+    private float timeCounter;
+    [SerializeField] private float timeMax;
+    private bool isCounting = false;
+
+    private int previousCountdown;
+    private int countdown;
+
+    private void Update() {
+
+        Debug.Log(previousCountdown + "  " + countdown);
+
+        if(isCounting){
+            timeCounter += Time.deltaTime;
+            countdown = GetCountdown();
+            if(timeCounter > timeMax){
+                
+                isCounting = false;
+                return;
+            }
+            if(previousCountdown > countdown){
+                //如果倒计时值变化，call event
+                EventHandler.CallCountdown(countdown);
+            }
+            previousCountdown = countdown;
+        }
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+    public void StartCount(){
+        EventHandler.CallCountdown((int)timeMax);
+
+        timeCounter = 0;
+        isCounting = true;
+    }
+
+    public int GetCountdown(){
+        int countdown = Mathf.CeilToInt(timeMax - timeCounter);
+        return countdown;
     }
 }

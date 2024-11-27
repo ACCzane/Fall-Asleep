@@ -22,4 +22,9 @@ public static class EventHandler
     public static void CallAttack(){
         Attack?.Invoke();
     }
+
+    public static Action<int> Countdown;
+    public static void CallCountdown(int countdownValue){
+        Countdown?.Invoke(countdownValue);
+    }
 }

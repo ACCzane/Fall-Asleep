@@ -16,6 +16,14 @@ public class PlayerControl : MonoBehaviour
 
     [Header("参数")]
     [SerializeField] private float playerSpeed;
+    public float PlayerSpeed{
+        get{
+            return playerSpeed;
+        }
+        private set{
+            playerSpeed = value;
+        }
+    }
 
     private void Awake() {
         playerInput = new PlayerInput();

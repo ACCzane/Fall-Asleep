@@ -18,7 +18,6 @@ public class SightCheck : MonoBehaviour
     private void OnTriggerStay2D(Collider2D other) {
         if (other.CompareTag("Player")) {
             //玩家只有先进入视锥的碰撞体，才会执行射线检测
-            Debug.Log("碰撞");
             CheckPlayerVisibility(other);
         }
     }

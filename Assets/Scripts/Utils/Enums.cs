@@ -19,3 +19,8 @@ public enum InteractType{
     Sleep,
     Null            //表示当前按“E”无效
 }
+
+public enum TimePeriod{
+    Day,
+    Night
+}
