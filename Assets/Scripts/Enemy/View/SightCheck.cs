@@ -9,7 +9,7 @@ public class SightCheck : MonoBehaviour
     [SerializeField] private Transform sightStart;
     [SerializeField] private LayerMask layerMask;
 
-    [SerializeField] private Enemy enemy;
+    [SerializeField] private Enemy_Soldior enemy;
 
     private void Awake() {
         polygonCollider = GetComponent<PolygonCollider2D>();

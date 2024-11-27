@@ -23,7 +23,7 @@ public class EnemySpawner : MonoBehaviour
         if(enemyGO != null){Debug.Log("该路线上的敌人已存在"); return;}
 
         enemyGO = Instantiate(enemyPrefab);
-        Enemy enemy = enemyGO.GetComponent<Enemy>();
+        Enemy_Soldior enemy = enemyGO.GetComponent<Enemy_Soldior>();
         enemy.Initialize(movePath, this);
     }
 

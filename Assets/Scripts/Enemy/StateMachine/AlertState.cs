@@ -3,6 +3,9 @@ using UnityEngine;
 
 public class AlertState : IStateBase
 {  
+
+    private bool isLoop;                                //决定是否循环播放Alert
+
     private Quaternion finalRotation;                   //决定最终旋转
     private Quaternion currentRotation;
 
@@ -29,13 +32,26 @@ public class AlertState : IStateBase
 
     public void Enter(Enemy enemy)
     {
-        Vector2 finalTargetDirection = 
-            (enemy.PosNodes[enemy.currentHeadingNodeIndex]
-            - new Vector2(enemy.transform.position.x, enemy.transform.position.y)).normalized;
+        //如果该敌人是巡逻者，Alert不循环播放，有最终位置
+        if(enemy is Enemy_Soldior){
+
+            isLoop = false;
+
+            Enemy_Soldior enemy_Soldior = enemy as Enemy_Soldior;
+            Vector2 finalTargetDirection = 
+                (enemy_Soldior.PosNodes[enemy_Soldior.currentHeadingNodeIndex]
+                - new Vector2(enemy.transform.position.x, enemy.transform.position.y)).normalized;
         
-        // 计算目标旋转，只需处理Z轴旋转
-        float angle = Mathf.Atan2(finalTargetDirection.y, finalTargetDirection.x) * Mathf.Rad2Deg; // 将弧度转换为角度
-        finalRotation = Quaternion.Euler(0, 0, angle);     //创建最终目标旋转
+            // 计算目标旋转，只需处理Z轴旋转
+            float angle = Mathf.Atan2(finalTargetDirection.y, finalTargetDirection.x) * Mathf.Rad2Deg; // 将弧度转换为角度
+            finalRotation = Quaternion.Euler(0, 0, angle);     //创建最终目标旋转
+        } 
+        else if(enemy is Enemy_Guard){
+
+            isLoop = true;
+
+        }
+
 
         currentRotationIndex = 0;
         RotationMax = zAngles.Count;
@@ -51,7 +67,17 @@ public class AlertState : IStateBase
 
     public void Update(Enemy enemy)
     {
+        if(!isLoop){
+            Update_NotLoop(enemy);
+        }else{
+            Update_Loop(enemy);
+        }
+        
+    }
 
+
+    // 不循环旋转
+    private void Update_NotLoop(Enemy enemy){
         if(finished){return;}
 
         enemy.View.rotation = Quaternion.RotateTowards(
@@ -76,6 +102,36 @@ public class AlertState : IStateBase
                 //更新目标旋转
                 currentRotation = finalRotation;
                 isFinalRotation = true;
+
+                return;
+            }
+
+            //更新目标旋转
+            currentRotationIndex++;
+            currentRotation = Quaternion.Euler(0,0,zAngles[currentRotationIndex]);
+        }
+    }
+
+    // 循环旋转
+    private void Update_Loop(Enemy enemy){
+
+        enemy.View.rotation = Quaternion.RotateTowards(
+            enemy.View.rotation,
+            currentRotation,
+            Time.deltaTime * enemy.RotateSpeed
+        );
+
+        if(Quaternion.Angle(enemy.View.rotation, currentRotation) < 0.1f){
+            //如果到达了目标旋转
+            //切换到下一个旋转方向
+
+
+            if(currentRotationIndex+1 == RotationMax){
+                //如果超出了警戒的旋转变更数量范围
+                //旋转回第一个方向
+                currentRotationIndex = 0;
+
+                currentRotation = Quaternion.Euler(0,0,zAngles[currentRotationIndex]);
 
                 return;
             }

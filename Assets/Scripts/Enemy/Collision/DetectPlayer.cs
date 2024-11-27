@@ -3,7 +3,7 @@ using UnityEngine;
 public class DetectPlayer : MonoBehaviour
 {
 
-    [SerializeField] private Enemy enemy;
+    [SerializeField] private Enemy_Soldior enemy;
 
     private void OnTriggerStay2D(Collider2D player) {
         if (player.CompareTag("Player")) {

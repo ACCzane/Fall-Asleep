@@ -8,11 +8,15 @@ public class ResetViewState : IStateBase
 
     public Quaternion TargetRotation{get; private set;}
 
+    private Enemy_Soldior enemy_Soldior;
+
     public void Enter(Enemy enemy)
     {
+        enemy_Soldior = enemy as Enemy_Soldior;
+
         Vector2 targetDirection = 
-            (enemy.PosNodes[enemy.currentHeadingNodeIndex]
-            - new Vector2(enemy.transform.position.x, enemy.transform.position.y)).normalized;
+            (enemy_Soldior.PosNodes[enemy_Soldior.currentHeadingNodeIndex]
+            - new Vector2(enemy_Soldior.transform.position.x, enemy_Soldior.transform.position.y)).normalized;
         
         // 计算目标旋转，只需处理Z轴旋转
         float angle = Mathf.Atan2(targetDirection.y, targetDirection.x) * Mathf.Rad2Deg; // 将弧度转换为角度
@@ -27,10 +31,10 @@ public class ResetViewState : IStateBase
 
     public void Update(Enemy enemy)
     {
-        enemy.View.rotation = Quaternion.RotateTowards(
-            enemy.View.rotation,
+        enemy_Soldior.View.rotation = Quaternion.RotateTowards(
+            enemy_Soldior.View.rotation,
             TargetRotation,
-            Time.deltaTime * enemy.RotateSpeed
+            Time.deltaTime * enemy_Soldior.RotateSpeed
         );
     }
 }
