@@ -8,10 +8,14 @@ public class GameManager : MonoBehaviour
     [SerializeField] private EnemyManager enemyManager;
     [SerializeField] private UIManager uiManager;
     [SerializeField] private TimeManager timeManager;
+    [SerializeField] private LightManager lightManager;
 
     private void OnEnable() {
-        
-        
+        EventHandler.NightFall += StartNight;
+    }
+
+    private void OnDisable() {
+        EventHandler.NightFall -= StartNight;
     }
 
     private void Start() {
@@ -29,11 +33,14 @@ public class GameManager : MonoBehaviour
 
     public void StartDay(){
 
-        Debug.Log("StartDay!");
-
         playerControl.enabled = true;
         timeManager.StartCount();
         uiManager.TurnCountdownText();
+    }
+
+    private void StartNight()
+    {
+        
     }
 
 }

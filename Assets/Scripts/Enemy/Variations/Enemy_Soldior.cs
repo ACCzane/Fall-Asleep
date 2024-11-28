@@ -5,19 +5,6 @@ using UnityEngine;
 
 public class Enemy_Soldior : Enemy
 {
-    // private EnemyStateMachine stateMachine;
-
-    // [SerializeField] private SpriteRenderer spr;
-    // public SpriteRenderer Spr{
-    //     get{
-    //         return spr;
-    //     } 
-    //     private set{
-    //         spr = value;
-    //     }
-    // }
-
-    
 
     #region 移动
     [HideInInspector]public int currentHeadingNodeIndex = 0;     //希望MoveState能改变它

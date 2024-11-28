@@ -50,9 +50,9 @@ public class MoveState : IStateBase
         currentPosition = enemy.transform.position;
         currentDir = (currentPosition - lastPosition).normalized;
 
-        Debug.Log(currentDir);
+        // Debug.Log(currentDir);
 
-        RotateTowards(enemy.View, currentDir, enemy.RotateSpeed * 2);
+        RotateTowards(enemy.View, currentDir, enemy.RotateSpeed * 5);
 
         lastPosition = currentPosition;
     }

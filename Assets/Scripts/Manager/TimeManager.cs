@@ -17,6 +17,8 @@ public class TimeManager : MonoBehaviour
             countdown = GetCountdown();
             if(timeCounter > timeMax){
                 
+                //进入黑夜
+                EventHandler.CallNightFall();
                 isCounting = false;
                 return;
             }

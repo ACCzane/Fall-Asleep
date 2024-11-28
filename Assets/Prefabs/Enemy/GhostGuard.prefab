@@ -60,6 +60,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: GhostGuard
       objectReference: {fileID: 0}
+    - target: {fileID: 2946661380298246604, guid: 288fe8eab1d24b54ba6120e6f458398d, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2946661380298246604, guid: 288fe8eab1d24b54ba6120e6f458398d, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2946661380298246604, guid: 288fe8eab1d24b54ba6120e6f458398d, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2946661380298246604, guid: 288fe8eab1d24b54ba6120e6f458398d, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2946661380298246604, guid: 288fe8eab1d24b54ba6120e6f458398d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5524892312527711337, guid: 288fe8eab1d24b54ba6120e6f458398d, type: 3}
       propertyPath: eulerAngles_z.Array.size
       value: 2

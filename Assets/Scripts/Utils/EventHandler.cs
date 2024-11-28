@@ -27,4 +27,9 @@ public static class EventHandler
     public static void CallCountdown(int countdownValue){
         Countdown?.Invoke(countdownValue);
     }
+
+    public static Action NightFall;
+    public static void CallNightFall(){
+        NightFall?.Invoke();
+    }
 }

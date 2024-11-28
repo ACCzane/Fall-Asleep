@@ -8,6 +8,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 597162356145407528, guid: 288fe8eab1d24b54ba6120e6f458398d, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 885899442552038512, guid: 288fe8eab1d24b54ba6120e6f458398d, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 6c44413da661908499d3206ff4a4086a, type: 2}
     - target: {fileID: 2273016753895450462, guid: 288fe8eab1d24b54ba6120e6f458398d, type: 3}
       propertyPath: enemy
       value: 
@@ -15,6 +23,38 @@ PrefabInstance:
     - target: {fileID: 2378278874528659785, guid: 288fe8eab1d24b54ba6120e6f458398d, type: 3}
       propertyPath: m_Name
       value: GhostSoldior
+      objectReference: {fileID: 0}
+    - target: {fileID: 2946661380298246604, guid: 288fe8eab1d24b54ba6120e6f458398d, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2946661380298246604, guid: 288fe8eab1d24b54ba6120e6f458398d, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2946661380298246604, guid: 288fe8eab1d24b54ba6120e6f458398d, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2946661380298246604, guid: 288fe8eab1d24b54ba6120e6f458398d, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2946661380298246604, guid: 288fe8eab1d24b54ba6120e6f458398d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7755541715155958437, guid: 288fe8eab1d24b54ba6120e6f458398d, type: 3}
+      propertyPath: _angle
+      value: 45
+      objectReference: {fileID: 0}
+    - target: {fileID: 7755541715155958437, guid: 288fe8eab1d24b54ba6120e6f458398d, type: 3}
+      propertyPath: _radius
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7755541715155958437, guid: 288fe8eab1d24b54ba6120e6f458398d, type: 3}
+      propertyPath: layerMask.m_Bits
+      value: 4096
       objectReference: {fileID: 0}
     - target: {fileID: 7981421809170921817, guid: 288fe8eab1d24b54ba6120e6f458398d, type: 3}
       propertyPath: m_LocalPosition.x
@@ -55,6 +95,10 @@ PrefabInstance:
     - target: {fileID: 7981421809170921817, guid: 288fe8eab1d24b54ba6120e6f458398d, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7994529173881321518, guid: 288fe8eab1d24b54ba6120e6f458398d, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.6
       objectReference: {fileID: 0}
     - target: {fileID: 8851053188755381629, guid: 288fe8eab1d24b54ba6120e6f458398d, type: 3}
       propertyPath: enemy
