@@ -10,14 +10,15 @@ public class PlayerControl : MonoBehaviour
     private Vector2 previousPlayerMovement;
     private bool isMoving;              //用于传递给Animator
     private bool isHiding;
-    private bool isSleeping;
 
     [SerializeField] private Animator animator;
     private float lastDeltaX;           //用于动画BlendTree状态的停留
     private float lastDeltaY;
+    private bool isGhost;               //用于针对不同BlendTree
 
     //交互
-    public InteractType currentActivatedInteractType;     //E：与物体交互
+    // public InteractType currentActivatedInteractType;     //E：与物体交互
+    public IInteractable currentInteractableTarget;
 
     [Header("参数")]
     [SerializeField] private float playerSpeed;
@@ -38,6 +39,7 @@ public class PlayerControl : MonoBehaviour
         playerInput.Enable();
 
         playerInput.Player.Interact.performed += OnInteractButtonPressed;
+        playerInput.Player.Pick.performed += OnPickButtonPressed;
 
         EventHandler.Sleep += OnSleep;
         EventHandler.Hide += OnHide;
@@ -47,6 +49,7 @@ public class PlayerControl : MonoBehaviour
         playerInput.Disable();
 
         playerInput.Player.Interact.performed -= OnInteractButtonPressed;
+        playerInput.Player.Pick.performed -= OnPickButtonPressed;
 
         EventHandler.Sleep -= OnSleep;
         EventHandler.Hide -= OnHide;
@@ -55,7 +58,7 @@ public class PlayerControl : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        currentActivatedInteractType = InteractType.Null;
+        // currentActivatedInteractType = InteractType.Null;
     }
 
     // Update is called once per frame
@@ -67,7 +70,7 @@ public class PlayerControl : MonoBehaviour
     }
 
     private void MovePlayer(){
-        if(isHiding || isSleeping){return;}
+        if(isHiding){return;}
 
         //更改朝向（已改到Animator执行）
         // if(playerMovement.x < -0.5){
@@ -83,10 +86,17 @@ public class PlayerControl : MonoBehaviour
             isMoving = false;
         }
 
-        if(Vector2.Distance(playerMovement,Vector2.zero) > 0.1f){
-            lastDeltaX = playerMovement.x;
-            lastDeltaY = playerMovement.y;
+        if(!isGhost){
+            if(Vector2.Distance(playerMovement,Vector2.zero) > 0.1f){
+                lastDeltaX = playerMovement.x;
+                lastDeltaY = playerMovement.y;
+            }
+        }else{
+            if(playerMovement.x != 0){
+                lastDeltaX = playerMovement.x;
+            }
         }
+        
 
         animator.SetBool("IsMoving", isMoving);
         animator.SetFloat("DeltaX",lastDeltaX);
@@ -100,20 +110,27 @@ public class PlayerControl : MonoBehaviour
 
     private void OnInteractButtonPressed(UnityEngine.InputSystem.InputAction.CallbackContext context)
     {
-        if(currentActivatedInteractType == InteractType.Null){
-            return;
-        }
-        if(currentActivatedInteractType == InteractType.Hide){
-            EventHandler.CallHide();
-        }
-        if(currentActivatedInteractType == InteractType.Sleep){
-            EventHandler.CallSleep();
-        }
+        // if(currentActivatedInteractType == InteractType.Null){
+        //     return;
+        // }
+        // if(currentActivatedInteractType == InteractType.Hide){
+        //     EventHandler.CallHide();
+        // }
+        // if(currentActivatedInteractType == InteractType.Sleep){
+        //     EventHandler.CallSleep();
+        // }
+        if(currentInteractableTarget == null){return;}
+        currentInteractableTarget.Interact();
+    }
+
+    private void OnPickButtonPressed(UnityEngine.InputSystem.InputAction.CallbackContext context)
+    {
+        
     }
 
     private void OnSleep()
     {
-        isHiding = !isHiding;           //玩家可以按E进入，也可以按E退出
+        isGhost = true;           
     }
 
     private void OnHide()

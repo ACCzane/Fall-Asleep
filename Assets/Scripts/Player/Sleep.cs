@@ -12,7 +12,7 @@ public class Sleep : MonoBehaviour
     private Vector2 sleepInPos;
     private Vector2 getOutPos;
 
-    public bool IsSleeping{get; private set;}
+    // public bool IsSleeping{get; private set;}
 
     private void OnEnable() {
         EventHandler.Sleep += Onsleep;
@@ -24,19 +24,23 @@ public class Sleep : MonoBehaviour
 
     private void Onsleep()
     {
-        if(IsSleeping){
-            GetOut();
-        }else{
-            sleepIn();
-        }
+        // if(IsSleeping){
+        //     GetOut();
+        // }else{
+        //     sleepIn();
+        // }
+        sleepIn();
     }
 
     public void sleepIn(){
         transform.position = sleepInPos;
 
-        playerBodySpriteRenderer.enabled = false;
+        // playerBodySpriteRenderer.enabled = false;
 
-        IsSleeping = true;
+        //通知GameManager进入黑夜
+        EventHandler.CallNightFall();
+
+        // IsSleeping = true;
         // sleepButtonRenderer.sprite = hidingSprite;
         sleepButtonRenderer.sprite = null;
     }
@@ -45,7 +49,7 @@ public class Sleep : MonoBehaviour
         transform.position = getOutPos;
 
         playerBodySpriteRenderer.enabled = true;
-        IsSleeping = false;
+        // IsSleeping = false;
 
         sleepButtonRenderer.sprite = sleepButtonSprite;
     }

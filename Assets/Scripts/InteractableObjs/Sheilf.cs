@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Hider : MonoBehaviour
+public class Sheilf : MonoBehaviour, IInteractable
 {
     // private Collider2D collider2D;
 
@@ -12,11 +12,12 @@ public class Hider : MonoBehaviour
         // collider2D = GetComponent<Collider2D>();
     }
 
-    private void OnTriggerEnter2D(Collider2D other) {
+    public void OnTriggerEnter2D(Collider2D other) {
         if(other.tag == "Player"){
             //玩家可以按键进入
             other.GetComponent<Hide>().TurnHintButton(true);
-            other.GetComponent<PlayerControl>().currentActivatedInteractType = InteractType.Hide;
+            // other.GetComponent<PlayerControl>().currentActivatedInteractType = InteractType.Hide;
+            other.GetComponent<PlayerControl>().currentInteractableTarget = this;
 
             //玩家注册进入位置和退出位置
             other.GetComponent<Hide>().SetPos(
@@ -26,11 +27,16 @@ public class Hider : MonoBehaviour
         }
     }
 
-    private void OnTriggerExit2D(Collider2D other) {
+    public void OnTriggerExit2D(Collider2D other) {
         if(other.tag == "Player"){
             other.GetComponent<Hide>().TurnHintButton(false);
-            other.GetComponent<PlayerControl>().currentActivatedInteractType = InteractType.Null;
+            // other.GetComponent<PlayerControl>().currentActivatedInteractType = InteractType.Null;
+            other.GetComponent<PlayerControl>().currentInteractableTarget = null;
         }
+    }
+
+    public void Interact(){
+        EventHandler.CallHide();
     }
 
     private void OnDrawGizmosSelected() {

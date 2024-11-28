@@ -68,7 +68,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: -0.045913935, y: 0.19264758}
+  m_Offset: {x: -0.02990222, y: 1.0863297}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -78,7 +78,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 3.9397793, y: 3.0746224}
+  m_Size: {x: 3.683589, y: 2.2420387}
   m_EdgeRadius: 0
 --- !u!114 &7195106037790159186
 MonoBehaviour:
@@ -92,8 +92,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b45a07c22bd3d74ab0d66bc2ab63b19, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inPos: {x: 0, y: 0}
-  outPos: {x: 0, y: 0}
+  inPos: {x: 0, y: 1.15}
+  outPos: {x: 0, y: 0.3}
   bedSpr: {fileID: 2334356609859387310}
   emptyBed: {fileID: 21300000, guid: 306eebb950b58d74f89731c4199b923f, type: 3}
   playerInBed: {fileID: 21300000, guid: 58f0ffbae06ae79498a4b1cf1978f43e, type: 3}
@@ -183,4 +183,4 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
-  m_SpriteSortPoint: 0
+  m_SpriteSortPoint: 1

@@ -10,6 +10,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] private TimeManager timeManager;
     [SerializeField] private LightManager lightManager;
 
+    [SerializeField] private GameObject player;
+
     private void OnEnable() {
         EventHandler.NightFall += StartNight;
     }
@@ -41,11 +43,17 @@ public class GameManager : MonoBehaviour
 
     private void StartNight()
     {
-        uiManager.TurnCountdownText(false);      //关闭倒计时
+
+        //播放进入黑夜的动画
+        //TODO
+
+        //动画结束后
+        uiManager.TurnCountdownText(false);      //关闭倒计时面板
+        timeManager.ShutCountdown();             //关闭倒计时逻辑
         lightManager.TurnOffGlobalLight();  //全局光照Intensity调整到0
         enemyManager.GenerateEnemySoldiors_Night();     //晚上重置敌人
 
-        //先暂停时间
+        player.GetComponentInChildren<Animator>().SetBool("IsGhost", true);   //修改玩家为幽灵，Animator初始默认情况为非幽灵
     }
 
 }

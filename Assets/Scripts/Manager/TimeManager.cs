@@ -10,6 +10,8 @@ public class TimeManager : MonoBehaviour
     private int previousCountdown;
     private int countdown;
 
+    
+
     private void Update() {
         
         if(isCounting){
@@ -40,5 +42,9 @@ public class TimeManager : MonoBehaviour
     public int GetCountdown(){
         int countdown = Mathf.CeilToInt(timeMax - timeCounter);
         return countdown;
+    }
+
+    public void ShutCountdown(){
+        isCounting = false;
     }
 }

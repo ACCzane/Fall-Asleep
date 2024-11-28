@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Bed : MonoBehaviour
+public class Bed : MonoBehaviour, IInteractable
 {
     // private Collider2D collider2D;
 
@@ -11,6 +11,8 @@ public class Bed : MonoBehaviour
     [SerializeField] private SpriteRenderer bedSpr;
     [SerializeField] private Sprite emptyBed;
     [SerializeField] private Sprite playerInBed;
+
+    private bool canInteract;
 
     private void Awake() {
         // collider2D = GetComponent<Collider2D>();
@@ -24,11 +26,12 @@ public class Bed : MonoBehaviour
         EventHandler.Sleep -= OnSleep;
     }
 
-    private void OnTriggerEnter2D(Collider2D other) {
+    public void OnTriggerEnter2D(Collider2D other) {
         if(other.tag == "Player"){
             //玩家可以按键进入
             other.GetComponent<Sleep>().TurnHintButton(true);
-            other.GetComponent<PlayerControl>().currentActivatedInteractType = InteractType.Sleep;
+            // other.GetComponent<PlayerControl>().currentActivatedInteractType = InteractType.Sleep;
+            other.GetComponent<PlayerControl>().currentInteractableTarget = this;
 
             //玩家注册进入位置和退出位置
             other.GetComponent<Sleep>().SetPos(
@@ -38,16 +41,25 @@ public class Bed : MonoBehaviour
         }
     }
 
-    private void OnTriggerExit2D(Collider2D other) {
+    public void OnTriggerExit2D(Collider2D other) {
         if(other.tag == "Player"){
             other.GetComponent<Sleep>().TurnHintButton(false);
-            other.GetComponent<PlayerControl>().currentActivatedInteractType = InteractType.Null;
+            // other.GetComponent<PlayerControl>().currentActivatedInteractType = InteractType.Null;
+            other.GetComponent<PlayerControl>().currentInteractableTarget = null;
         }
     }
 
     private void OnSleep()
     {
-        bedSpr.sprite = playerInBed;
+        if(canInteract)
+        {
+            bedSpr.sprite = playerInBed;
+        }
+        canInteract = false;
+    }
+
+    public void Interact(){
+        EventHandler.CallSleep();
     }
 
     private void OnDrawGizmosSelected() {
