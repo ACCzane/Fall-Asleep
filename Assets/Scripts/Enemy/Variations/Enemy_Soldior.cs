@@ -83,6 +83,8 @@ public class Enemy_Soldior : Enemy
 
     public void Initialize(MovePath movePath, EnemySpawner enemySpawner){
 
+        reverse = 1;
+
         this.enemySpawner = enemySpawner;
 
         SetMovePath(movePath);
@@ -91,7 +93,7 @@ public class Enemy_Soldior : Enemy
 
         transform.position = PosNodes[0];
         
-        currentHeadingNodeIndex = 1;                //currentHeadingNode决定了往哪走，在MoveState中的Enter读取本文件的currentHeadingNode
+        currentHeadingNodeIndex = 0;                //currentHeadingNode决定了往哪走，在MoveState中的Enter读取本文件的currentHeadingNode
         ChangeState(EnemyState.ResetView); // 初始状态
     }
 

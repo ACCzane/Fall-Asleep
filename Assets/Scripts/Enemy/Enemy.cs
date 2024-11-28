@@ -1,5 +1,6 @@
 using Cinemachine;
 using UnityEngine;
+using UnityEngine.Rendering.Universal;
 
 public abstract class Enemy : MonoBehaviour
 {
@@ -52,6 +53,18 @@ public abstract class Enemy : MonoBehaviour
         }
         protected set{
             playerTransform = value;
+        }
+    }
+    #endregion
+
+    #region 光照相关
+    [SerializeField] private Light2D circleLight;
+    public Light2D CircleLight{
+        get{
+            return circleLight;
+        }
+        protected set{
+            circleLight = value;
         }
     }
     #endregion

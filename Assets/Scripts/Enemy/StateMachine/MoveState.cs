@@ -27,6 +27,12 @@ public class MoveState : IStateBase
 
     public void Exit(Enemy enemy)
     {
+        //考虑只有一点的情况
+        if(enemy_Soldior.PosNodes.Count == 1){
+            return;
+        }
+
+
         if(enemy_Soldior.currentHeadingNodeIndex == enemy_Soldior.PosNodes.Count-1){enemy_Soldior.reverse = -1;}
         else if(enemy_Soldior.currentHeadingNodeIndex == 0){enemy_Soldior.reverse = 1;}
 

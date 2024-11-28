@@ -17,7 +17,7 @@ public class Enemy_Guard : Enemy
     private void Update()
     {
         stateMachine.Update(); // 更新状态
-        Debug.Log(stateMachine.currentState);
+        // Debug.Log(stateMachine.currentState);
 
         //入口状态：Alert(Loop)
 
@@ -37,7 +37,7 @@ public class Enemy_Guard : Enemy
         stateMachine.ChangeState(new AlertState(roundingView.eulerAngles_z));
     }
 
-    public void TargetPlayer(Transform transform){
-        PlayerTransform = transform;
-    }
+    // public void TargetPlayer(Transform transform){
+    //     PlayerTransform = transform;
+    // }
 }

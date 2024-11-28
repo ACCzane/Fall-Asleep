@@ -7,8 +7,17 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] private MovePath movePath;
     [SerializeField] private float rebirthCD = 2f;
 
-    private GameObject enemyGO;
-    private bool canGenEnemy = true;
+    private Enemy_Soldior enemy_Soldior;
+    public Enemy_Soldior Enemy_Soldior{
+        get{
+            return enemy_Soldior;
+        }
+        private set{
+            enemy_Soldior = value;
+        }
+    }
+
+    public bool canGenEnemy = true;
 
     private void OnEnable() {
         EventHandler.Attack += OnAttack;
@@ -18,13 +27,18 @@ public class EnemySpawner : MonoBehaviour
         EventHandler.Attack -= OnAttack;
     }
 
-    public void GenEnemy(){
+    public Enemy GenEnemy(){
 
-        if(enemyGO != null){Debug.Log("该路线上的敌人已存在"); return;}
+        if(enemy_Soldior != null){
+            enemy_Soldior.Initialize(movePath, this);       //重新初始化，敌人位置，状态改变
+            return enemy_Soldior;
+        }
 
-        enemyGO = Instantiate(enemyPrefab);
-        Enemy_Soldior enemy = enemyGO.GetComponent<Enemy_Soldior>();
-        enemy.Initialize(movePath, this);
+        GameObject enemyGO = Instantiate(enemyPrefab);
+        enemy_Soldior = enemyGO.GetComponent<Enemy_Soldior>();
+        enemy_Soldior.Initialize(movePath, this);
+
+        return enemy_Soldior;
     }
 
     public void EnemyRebirth(){
@@ -38,14 +52,18 @@ public class EnemySpawner : MonoBehaviour
             yield return null;
         }
 
-        if(enemyGO != null){Debug.Log("该路线上的敌人已存在"); yield break;}
+        if(enemy_Soldior != null){Debug.Log("该路线上的敌人已存在"); yield break;}
 
         GenEnemy();
     }
 
+    //鬼魂执行攻击动作
     private void OnAttack()
     {
-        Destroy(enemyGO);
-        EnemyRebirth();
+        Destroy(enemy_Soldior.gameObject);
+        if(canGenEnemy){
+            EnemyRebirth();
+        }
+        
     }
 }

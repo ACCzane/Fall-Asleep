@@ -8,7 +8,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: "\u9B3C\u9B42\u89C6\u91CE"
-  m_Shader: {fileID: 10753, guid: 0000000000000000f000000000000000, type: 0}
+  m_Shader: {fileID: 4800000, guid: e260cfa7296ee7642b167f1eb5be5023, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
@@ -47,7 +47,7 @@ Material:
     - _Metallic: 0
     - _ZWrite: 0
     m_Colors:
-    - _Color: {r: 0.9622642, g: 0.5428978, b: 0.54013884, a: 1}
+    - _Color: {r: 0.9245283, g: 0.61489856, b: 0.61489856, a: 1}
     - _Flip: {r: 1, g: 1, b: 1, a: 1}
     - _RendererColor: {r: 1, g: 1, b: 1, a: 1}
   m_BuildTextureStacks: []

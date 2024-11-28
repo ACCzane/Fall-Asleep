@@ -8,6 +8,7 @@ public class 视野范围检测 : MonoBehaviour
     [SerializeField] private int _divide;
     [SerializeField] private float _angle;
     [SerializeField] private float _radius;
+    [SerializeField] private bool DebugRay;
     // private RaycastHit _hit;
     // private RaycastHit2D _hit;
 
@@ -77,8 +78,9 @@ public class 视野范围检测 : MonoBehaviour
             rayData.m_hitCollider = null;
             rayData.m_end = rayData.m_start + rayData.m_direction * _radius;
         }
-
-        Debug.DrawRay(rayData.m_start, rayData.m_end - rayData.m_start, Color.red);
+        
+        if(DebugRay)
+            Debug.DrawRay(rayData.m_start, rayData.m_end - rayData.m_start, Color.red);
         
     }
 

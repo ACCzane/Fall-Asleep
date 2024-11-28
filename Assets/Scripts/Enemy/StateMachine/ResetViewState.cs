@@ -14,6 +14,8 @@ public class ResetViewState : IStateBase
     {
         enemy_Soldior = enemy as Enemy_Soldior;
 
+        Debug.Log(enemy_Soldior + " " + enemy_Soldior.currentHeadingNodeIndex + " " + enemy_Soldior.PosNodes.Count);
+
         Vector2 targetDirection = 
             (enemy_Soldior.PosNodes[enemy_Soldior.currentHeadingNodeIndex]
             - new Vector2(enemy_Soldior.transform.position.x, enemy_Soldior.transform.position.y)).normalized;
