@@ -1,16 +1,19 @@
 using UnityEngine;
 
-public class Tank : MonoBehaviour
+public class Tank : MonoBehaviour, IInteractable
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    public void Interact()
     {
-        
+        throw new System.NotImplementedException();
     }
 
-    // Update is called once per frame
-    void Update()
+    public void OnTriggerEnter2D(Collider2D other)
     {
-        
+        throw new System.NotImplementedException();
+    }
+
+    public void OnTriggerExit2D(Collider2D other)
+    {
+        throw new System.NotImplementedException();
     }
 }
