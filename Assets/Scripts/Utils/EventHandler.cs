@@ -38,9 +38,4 @@ public static class EventHandler
 
     }
 
-    //镜头红晕、玩家血量下降
-    public static Action Attack;
-    public static void CallAttack(){
-        Debug.Log("Attack!");
-    }
 }
