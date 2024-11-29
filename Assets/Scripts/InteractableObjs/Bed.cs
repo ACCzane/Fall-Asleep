@@ -12,7 +12,7 @@ public class Bed : MonoBehaviour, IInteractable
     [SerializeField] private Sprite emptyBed;
     [SerializeField] private Sprite playerInBed;
 
-    private bool canInteract;
+    private bool canInteract = true;
 
     private void Awake() {
         // collider2D = GetComponent<Collider2D>();
@@ -51,15 +51,16 @@ public class Bed : MonoBehaviour, IInteractable
 
     private void OnSleep()
     {
-        if(canInteract)
-        {
-            bedSpr.sprite = playerInBed;
-        }
         canInteract = false;
     }
 
     public void Interact(){
         EventHandler.CallSleep();
+
+        if(canInteract)
+        {
+            bedSpr.sprite = playerInBed;
+        }
     }
 
     private void OnDrawGizmosSelected() {

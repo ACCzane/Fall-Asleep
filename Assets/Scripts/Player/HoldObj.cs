@@ -2,15 +2,28 @@ using UnityEngine;
 
 public class HoldObj : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
+    public Transform holdAnchor;
+
+    public IPickable holdingObj;            //玩家正拿着的物品
+    public IPickable currentTargetObj;     //在场景中被玩家检测到的物品
+    public IInteractable interactableObj;
+    private bool isHolding;
+
+    private void OnEnable() {
+        EventHandler.UseItemInHand += OnUseItemInHand; 
+    }
+    private void OnDisable() {
+        EventHandler.UseItemInHand -= OnUseItemInHand;
     }
 
-    // Update is called once per frame
-    void Update()
+    private void OnUseItemInHand()
     {
-        
+        if(holdingObj == null){
+            return;
+        }
+        Destroy((holdingObj as MonoBehaviour).gameObject);
+        holdingObj = null;
+
     }
+
 }

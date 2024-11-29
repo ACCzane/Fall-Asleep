@@ -5,6 +5,8 @@ public class Hide : MonoBehaviour
 
     [Header("引用")]
     [SerializeField] private SpriteRenderer playerBodySpriteRenderer;
+    [SerializeField] private Transform playerHoldingAnchor;
+    private SpriteRenderer playerHoldingSpriteRenderer;
     [SerializeField] private SpriteRenderer hideButtonRenderer;
 
     [SerializeField] private Sprite hideButtonSprite;
@@ -25,6 +27,11 @@ public class Hide : MonoBehaviour
 
     private void OnHide()
     {
+
+        //先读一下玩家有没有拿物品
+        playerHoldingSpriteRenderer = playerHoldingAnchor.GetComponentInChildren<SpriteRenderer>();
+
+
         if(IsHiding){
             GetOut();
         }else{
@@ -36,6 +43,8 @@ public class Hide : MonoBehaviour
         transform.position = hideInPos;
 
         playerBodySpriteRenderer.enabled = false;
+        if(playerHoldingSpriteRenderer!=null)
+            playerHoldingSpriteRenderer.enabled = false;
 
         IsHiding = true;
         // hideButtonRenderer.sprite = hidingSprite;
@@ -46,6 +55,9 @@ public class Hide : MonoBehaviour
         transform.position = getOutPos;
 
         playerBodySpriteRenderer.enabled = true;
+        if(playerHoldingSpriteRenderer!=null)
+            playerHoldingSpriteRenderer.enabled = true;
+            
         IsHiding = false;
 
         hideButtonRenderer.sprite = hideButtonSprite;

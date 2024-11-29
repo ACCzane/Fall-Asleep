@@ -1,6 +1,6 @@
 using UnityEngine;
 
 public interface IPickable{
-    public void Pick(Transform player);
-    public void Drop();
+    public void Pick(HoldObj player);
+    public void Drop(HoldObj player);
 }

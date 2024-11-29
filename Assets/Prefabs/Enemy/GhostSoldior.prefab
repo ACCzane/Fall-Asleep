@@ -120,6 +120,11 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: -2841713623312926738}
   m_SourcePrefab: {fileID: 100100000, guid: 288fe8eab1d24b54ba6120e6f458398d, type: 3}
+--- !u!95 &4403691050469118913 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 9079293851372353236, guid: 288fe8eab1d24b54ba6120e6f458398d, type: 3}
+  m_PrefabInstance: {fileID: 4836070000314328341}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &5882453647875305130 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1350939597213158335, guid: 288fe8eab1d24b54ba6120e6f458398d, type: 3}
@@ -153,6 +158,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 951629be67adabb4186fe382b3fac74e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  anim: {fileID: 4403691050469118913}
   spr: {fileID: 6760828553357187390}
   enemySpeed: 5
   view: {fileID: 7780400340396059865}

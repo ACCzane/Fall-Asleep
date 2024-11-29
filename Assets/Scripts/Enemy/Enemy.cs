@@ -4,6 +4,9 @@ using UnityEngine.Rendering.Universal;
 
 public abstract class Enemy : MonoBehaviour
 {
+
+    [SerializeField] protected Animator anim;
+
     protected EnemyStateMachine stateMachine;   //初始化在具体类中实现!
     [SerializeField] protected SpriteRenderer spr;
     public SpriteRenderer Spr{
@@ -67,6 +70,7 @@ public abstract class Enemy : MonoBehaviour
             circleLight = value;
         }
     }
+    public bool lightOn;
     #endregion
 
     public void ChangeState(EnemyState enemyState){
@@ -90,6 +94,10 @@ public abstract class Enemy : MonoBehaviour
 
     public void TargetPlayer(Transform transform){
         PlayerTransform = transform;
+    }
+
+    public void DestroySelf(){
+        Destroy(gameObject);
     }
 
     #region CinemachineImpulse

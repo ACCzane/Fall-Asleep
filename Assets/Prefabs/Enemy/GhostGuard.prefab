@@ -28,6 +28,10 @@ PrefabInstance:
       propertyPath: m_ShadowsEnabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 885899442552038512, guid: 288fe8eab1d24b54ba6120e6f458398d, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 6c44413da661908499d3206ff4a4086a, type: 2}
     - target: {fileID: 1350939597213158335, guid: 288fe8eab1d24b54ba6120e6f458398d, type: 3}
       propertyPath: m_Color.b
       value: 0
@@ -94,11 +98,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7981421809170921817, guid: 288fe8eab1d24b54ba6120e6f458398d, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 38
       objectReference: {fileID: 0}
     - target: {fileID: 7981421809170921817, guid: 288fe8eab1d24b54ba6120e6f458398d, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -16
       objectReference: {fileID: 0}
     - target: {fileID: 7981421809170921817, guid: 288fe8eab1d24b54ba6120e6f458398d, type: 3}
       propertyPath: m_LocalPosition.z
@@ -145,6 +149,11 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 8063065242935388255}
   m_SourcePrefab: {fileID: 100100000, guid: 288fe8eab1d24b54ba6120e6f458398d, type: 3}
+--- !u!95 &4524729313250083457 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 9079293851372353236, guid: 288fe8eab1d24b54ba6120e6f458398d, type: 3}
+  m_PrefabInstance: {fileID: 4668879250537739349}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &5941567970988277738 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1350939597213158335, guid: 288fe8eab1d24b54ba6120e6f458398d, type: 3}
@@ -178,6 +187,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de2b09a70efdc404ead952b5d4a262d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  anim: {fileID: 4524729313250083457}
   spr: {fileID: 6774914966353512574}
   enemySpeed: 5
   view: {fileID: 7507381937962778009}

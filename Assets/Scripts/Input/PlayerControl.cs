@@ -19,6 +19,7 @@ public class PlayerControl : MonoBehaviour
     //交互
     // public InteractType currentActivatedInteractType;     //E：与物体交互
     public IInteractable currentInteractableTarget;
+    [SerializeField]private HoldObj playerHold;
 
     [Header("参数")]
     [SerializeField] private float playerSpeed;
@@ -40,6 +41,7 @@ public class PlayerControl : MonoBehaviour
 
         playerInput.Player.Interact.performed += OnInteractButtonPressed;
         playerInput.Player.Pick.performed += OnPickButtonPressed;
+        playerInput.Player.Drop.performed += OnDropButtonPressed;
 
         EventHandler.Sleep += OnSleep;
         EventHandler.Hide += OnHide;
@@ -50,11 +52,12 @@ public class PlayerControl : MonoBehaviour
 
         playerInput.Player.Interact.performed -= OnInteractButtonPressed;
         playerInput.Player.Pick.performed -= OnPickButtonPressed;
+        playerInput.Player.Drop.performed -= OnDropButtonPressed;
 
         EventHandler.Sleep -= OnSleep;
         EventHandler.Hide -= OnHide;
     }
-
+    
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -119,13 +122,39 @@ public class PlayerControl : MonoBehaviour
         // if(currentActivatedInteractType == InteractType.Sleep){
         //     EventHandler.CallSleep();
         // }
-        if(currentInteractableTarget == null){return;}
+        if(currentInteractableTarget == null){
+            return;
+        }
         currentInteractableTarget.Interact();
     }
 
     private void OnPickButtonPressed(UnityEngine.InputSystem.InputAction.CallbackContext context)
     {
-        
+
+        //如果没有可交互物体，返回
+        if(playerHold.currentTargetObj == null){
+            return;
+        }
+        //如果场景中有可交互物体
+        else{
+            // Debug.Log("检测到");
+            //如果当前手上有物体
+            if(playerHold.holdingObj != null){
+                //先丢出去
+                playerHold.holdingObj.Drop(playerHold);
+            }
+            //如果当前手上没有物体
+            playerHold.currentTargetObj.Pick(playerHold);
+        }
+    }
+
+    private void OnDropButtonPressed(UnityEngine.InputSystem.InputAction.CallbackContext context)
+    {
+        //如果手上没物体
+        if(playerHold.holdingObj == null){
+            return;
+        }
+        playerHold.holdingObj.Drop(playerHold);
     }
 
     private void OnSleep()

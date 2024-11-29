@@ -1,16 +1,16 @@
 using UnityEngine;
 
 /// <summary>
-/// 该状态下，敌人“上浮”，逐渐消失，玩家相机逐渐出现暗角，随后玩家扣血，相机震动
+/// 该状态下，敌人快速接近玩家，并执行攻击
 /// </summary>
 public class FoundState : IStateBase
 {
-    private float timeDuration = 2f;
     private float timeCounter = 0;
     private SpriteRenderer spr;
     private Transform playerTransform;                      //猎杀时刻！
 
-    public float Progress => timeCounter/timeDuration;      //当前的进度，0代表开始，1代表结束
+    public bool finished;
+    public bool isFacingRight;                              //用于给动画穿参数
 
     private Color originColor;
     private Color color_alpha0;
@@ -42,7 +42,15 @@ public class FoundState : IStateBase
 
         timeCounter += Time.deltaTime;
 
-        enemy.transform.position = Vector3.Lerp(originPos, playerTransform.position, timeCounter/timeDuration);
-        spr.color = Color.Lerp(originColor, color_alpha0, timeCounter/timeDuration);
+        Vector3 dir = (playerTransform.position - enemy.transform.position).normalized;
+        enemy.transform.Translate(dir * enemy.EnemySpeed*2 * Time.deltaTime, Space.World);
+        // spr.color = Color.Lerp(originColor, color_alpha0, timeCounter/timeDuration);
+    
+        if(Vector3.Distance(playerTransform.position, enemy.transform.position) < 2f){
+            //经测试，2f的值刚好
+            Debug.Log(Vector3.Distance(playerTransform.position, enemy.transform.position));
+            finished = true;
+            isFacingRight = (playerTransform.position - enemy.transform.position).x > 0 ? true : false;
+        }
     }
 }

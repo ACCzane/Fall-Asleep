@@ -5,6 +5,8 @@ public class GameManager : MonoBehaviour
 {
     [SerializeField] private PlayerControl playerControl;
 
+    [SerializeField] private GameObject DespawnInNight;
+
     [SerializeField] private EnemyManager enemyManager;
     [SerializeField] private UIManager uiManager;
     [SerializeField] private TimeManager timeManager;
@@ -46,6 +48,9 @@ public class GameManager : MonoBehaviour
 
         //播放进入黑夜的动画
         //TODO
+
+        //晚上不会出现的物体被删除
+        Destroy(DespawnInNight);
 
         //动画结束后
         uiManager.TurnCountdownText(false);      //关闭倒计时面板

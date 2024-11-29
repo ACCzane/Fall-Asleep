@@ -18,6 +18,11 @@ public static class EventHandler
         Sleep?.Invoke();
     }
 
+    public static Action UseItemInHand;
+    public static void CallUseItemInHand(){
+        UseItemInHand?.Invoke();
+    }
+
     public static Action Attack;
     public static void CallAttack(){
         Attack?.Invoke();
