@@ -3,7 +3,8 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 3
-  tags: []
+  tags:
+  - EnemyCanNotice
   layers:
   - Default
   - TransparentFX
@@ -18,7 +19,7 @@ TagManager:
   - Enemy
   - Player
   - Obstacle
-  - 
+  - EnemyCanNotice
   - 
   - 
   - 
@@ -41,8 +42,14 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
-  - name: Top
+  - name: Item
     uniqueID: 3045489521
+    locked: 0
+  - name: Characters
+    uniqueID: 2797131885
+    locked: 0
+  - name: Enemy
+    uniqueID: 1585229947
     locked: 0
   m_RenderingLayers:
   - Default

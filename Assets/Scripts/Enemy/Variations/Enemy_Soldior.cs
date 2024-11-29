@@ -61,20 +61,29 @@ public class Enemy_Soldior : Enemy
             }
         }
 
-        //出口状态
-        if(stateMachine.currentState is FoundState){
+        //出口状态, 在SightCheck脚本中执行状态的更新（发现玩家）
+        if(stateMachine.currentState is FoundPlayerState){
             //如果目前正在“找到玩家”的状态
-            if((stateMachine.currentState as FoundState).finished){
+            if((stateMachine.currentState as FoundPlayerState).finished){
                 //如果该状态进度条已满(动作执行完毕)
                 
                 //通知Spawner重新生成一个（会有等待时间）
                 enemySpawner.EnemyRebirth();
                 
                 //执行攻击动画
-                anim.SetBool("IsRight", (stateMachine.currentState as FoundState).isFacingRight);
-                anim.SetTrigger("Attack");
+                // anim.SetBool("IsRight", (stateMachine.currentState as FoundPlayerState).isFacingRight);
+                // anim.SetTrigger("Attack");
                 // Destroy(gameObject);
                 
+            }
+        }
+
+        if(stateMachine.currentState is FoundTankFixedState){
+            //如果目前正在“发现电箱被修复”的状态
+            if((stateMachine.currentState as FoundTankFixedState).finished){
+                //如果该状态进度条已满（动作执行完毕）
+
+                ChangeState(EnemyState.Move);
             }
         }
     }
@@ -85,12 +94,12 @@ public class Enemy_Soldior : Enemy
 
     public void Initialize(MovePath movePath, EnemySpawner enemySpawner, bool lightOn){
 
-        this.lightOn = lightOn;
-        if(!lightOn){
-            CircleLight.gameObject.SetActive(false);
-        }else{
-            CircleLight.gameObject.SetActive(true);
-        }
+        // this.lightOn = lightOn;
+        // if(!lightOn){
+        //     CircleLight.gameObject.SetActive(false);
+        // }else{
+        //     CircleLight.gameObject.SetActive(true);
+        // }
 
         reverse = 1;
 

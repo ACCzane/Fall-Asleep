@@ -13,18 +13,18 @@ public class EnemyManager : MonoBehaviour
         }
     }
 
-    [SerializeField] private List<EnemySpawner> enemySpawners;
-    public List<Enemy> enemies;
+    [SerializeField] private List<EnemySpawner> ghostSoldiorSpawners;
+    public List<Enemy> ghostSoldiors;
     public void GenerateEnemySoldiors_Day(){
-        foreach (var enemySpawner in enemySpawners)
+        foreach (var enemySpawner in ghostSoldiorSpawners)
         {
             enemySpawner.canGenEnemy = true;        //鬼魂可以重生
-            enemies.Add(enemySpawner.GenEnemy(true));
+            ghostSoldiors.Add(enemySpawner.GenEnemy(true));
         }
     }
 
     public void GenerateEnemySoldiors_Night(){
-        foreach (var enemySpawner in enemySpawners)
+        foreach (var enemySpawner in ghostSoldiorSpawners)
         {
 
             //如果场景中的鬼魂还在CD，马上重生它
@@ -34,12 +34,12 @@ public class EnemyManager : MonoBehaviour
             Enemy enemy = enemySpawner.GenEnemy(false);      //有可能为Null
             
             if(enemy != null){
-                if(!enemies.Contains(enemy))
+                if(!ghostSoldiors.Contains(enemy))
                 {
-                    enemies.Add(enemy);
+                    ghostSoldiors.Add(enemy);
                 }
                 //关闭鬼魂的光照效果
-                enemy.CircleLight.enabled = false;
+                // enemy.CircleLight.enabled = false;
             }
                 
             //
@@ -47,7 +47,7 @@ public class EnemyManager : MonoBehaviour
     }
 
     public void RemoveEnemy(Enemy enemy){
-        enemies.Remove(enemy);
+        ghostSoldiors.Remove(enemy);
         Destroy(enemy.gameObject);
     }
 }

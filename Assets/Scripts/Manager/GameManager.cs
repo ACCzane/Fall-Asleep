@@ -1,8 +1,12 @@
+using System;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
+
+    public static GameManager Singleton;
+
     [SerializeField] private PlayerControl playerControl;
 
     [SerializeField] private GameObject DespawnInNight;
@@ -13,6 +17,13 @@ public class GameManager : MonoBehaviour
     [SerializeField] private LightManager lightManager;
 
     [SerializeField] private GameObject player;
+
+    private bool isNight;
+
+    private void Awake() {
+        if(Singleton == null)
+            Singleton = this;
+    }
 
     private void OnEnable() {
         EventHandler.NightFall += StartNight;
@@ -40,7 +51,9 @@ public class GameManager : MonoBehaviour
         playerControl.enabled = true;
         timeManager.StartCount();
         uiManager.TurnCountdownText(true);      //打开倒计时，默认关闭
-        lightManager.TurnOnGlobalLight();   //全局光照Intensity调整到0.3
+        lightManager.TurnOnGlobalLight();   //全局光照Intensity调整到1
+
+        isNight = false;
     }
 
     private void StartNight()
@@ -59,6 +72,12 @@ public class GameManager : MonoBehaviour
         enemyManager.GenerateEnemySoldiors_Night();     //晚上重置敌人
 
         player.GetComponentInChildren<Animator>().SetBool("IsGhost", true);   //修改玩家为幽灵，Animator初始默认情况为非幽灵
+    
+        isNight = true;
+    }
+
+    public bool IsNight(){
+        return isNight;
     }
 
 }

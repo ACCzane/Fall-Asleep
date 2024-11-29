@@ -42,7 +42,8 @@ RenderSettings:
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
-  serializedVersion: 12
+  serializedVersion: 13
+  m_BakeOnSceneLoad: 0
   m_GISettings:
     serializedVersion: 2
     m_BounceScale: 1
@@ -420,7 +421,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 21e90710d6233104da36be31e62b060b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeMax: 60
+  timeMax: 30
 --- !u!1 &163551127
 GameObject:
   m_ObjectHideFlags: 0
@@ -5791,10 +5792,10 @@ MonoBehaviour:
   m_BlendStyleIndex: 0
   m_FalloffIntensity: 0.5
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 0.2
+  m_Intensity: 1
   m_LightVolumeIntensity: 1
   m_LightVolumeEnabled: 0
-  m_ApplyToSortingLayers: 00000000717b86b5
+  m_ApplyToSortingLayers: 00000000717b86b56dd8b8a67bb07c5e
   m_LightCookieSprite: {fileID: 0}
   m_DeprecatedPointLightCookieSprite: {fileID: 0}
   m_LightOrder: 0
@@ -7910,11 +7911,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &1678732984 stripped
-SpriteRenderer:
-  m_CorrespondingSourceObject: {fileID: 2682813825310008786, guid: 1d670375a172f03478bd15192dad1813, type: 3}
-  m_PrefabInstance: {fileID: 3611090037445473141}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1715507360
 GameObject:
   m_ObjectHideFlags: 0
@@ -8865,33 +8861,17 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3968666}
     m_Modifications:
-    - target: {fileID: 989203648914291864, guid: 1d670375a172f03478bd15192dad1813, type: 3}
-      propertyPath: tankSpr
-      value: 
-      objectReference: {fileID: 1678732984}
-    - target: {fileID: 989203648914291864, guid: 1d670375a172f03478bd15192dad1813, type: 3}
-      propertyPath: tankBrokenSp
-      value: 
-      objectReference: {fileID: 21300000, guid: 7901f9bd81f65b94586f14f6b2c7ee7d, type: 3}
-    - target: {fileID: 989203648914291864, guid: 1d670375a172f03478bd15192dad1813, type: 3}
-      propertyPath: tankNotBrokenSp
-      value: 
-      objectReference: {fileID: 21300000, guid: 7901f9bd81f65b94586f14f6b2c7ee7d, type: 3}
     - target: {fileID: 1852325703177535632, guid: 1d670375a172f03478bd15192dad1813, type: 3}
       propertyPath: m_Name
       value: Tank
       objectReference: {fileID: 0}
-    - target: {fileID: 3208137428760006465, guid: 1d670375a172f03478bd15192dad1813, type: 3}
-      propertyPath: m_IsTrigger
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 7000128418284375295, guid: 1d670375a172f03478bd15192dad1813, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -4.57
+      value: 1.88
       objectReference: {fileID: 0}
     - target: {fileID: 7000128418284375295, guid: 1d670375a172f03478bd15192dad1813, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.04
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 7000128418284375295, guid: 1d670375a172f03478bd15192dad1813, type: 3}
       propertyPath: m_LocalPosition.z
@@ -9113,6 +9093,18 @@ PrefabInstance:
     - target: {fileID: 4413529664266021358, guid: 54fc63cfab7403140824bb3e427abf4f, type: 3}
       propertyPath: m_PointLightOuterRadius
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4413529664266021358, guid: 54fc63cfab7403140824bb3e427abf4f, type: 3}
+      propertyPath: m_ApplyToSortingLayers.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4413529664266021358, guid: 54fc63cfab7403140824bb3e427abf4f, type: 3}
+      propertyPath: 'm_ApplyToSortingLayers.Array.data[2]'
+      value: -1497835411
+      objectReference: {fileID: 0}
+    - target: {fileID: 4413529664266021358, guid: 54fc63cfab7403140824bb3e427abf4f, type: 3}
+      propertyPath: 'm_ApplyToSortingLayers.Array.data[3]'
+      value: 1585229947
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

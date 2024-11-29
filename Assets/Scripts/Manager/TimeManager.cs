@@ -2,7 +2,6 @@ using UnityEngine;
 
 public class TimeManager : MonoBehaviour
 {
-    private TimePeriod time;
     private float timeCounter;
     [SerializeField] private float timeMax;
     private bool isCounting = false;
@@ -10,7 +9,6 @@ public class TimeManager : MonoBehaviour
     private int previousCountdown;
     private int countdown;
 
-    
 
     private void Update() {
         

@@ -38,9 +38,4 @@ public static class EventHandler
         NightFall?.Invoke();
     }
 
-    public static Action<Transform> FindPlayer;
-    public static void CallAttack(Transform targetTransform){
-
-    }
-
 }

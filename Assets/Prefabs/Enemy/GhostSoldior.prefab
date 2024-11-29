@@ -20,6 +20,10 @@ PrefabInstance:
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: 6c44413da661908499d3206ff4a4086a, type: 2}
+    - target: {fileID: 2219823495939161131, guid: 288fe8eab1d24b54ba6120e6f458398d, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 9dfc825aed78fcd4ba02077103263b40, type: 2}
     - target: {fileID: 2273016753895450462, guid: 288fe8eab1d24b54ba6120e6f458398d, type: 3}
       propertyPath: enemy
       value: 
@@ -62,15 +66,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7755541715155958437, guid: 288fe8eab1d24b54ba6120e6f458398d, type: 3}
       propertyPath: layerMask.m_Bits
-      value: 4096
+      value: 12288
       objectReference: {fileID: 0}
     - target: {fileID: 7981421809170921817, guid: 288fe8eab1d24b54ba6120e6f458398d, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -7.63352
       objectReference: {fileID: 0}
     - target: {fileID: 7981421809170921817, guid: 288fe8eab1d24b54ba6120e6f458398d, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 1.3144274
       objectReference: {fileID: 0}
     - target: {fileID: 7981421809170921817, guid: 288fe8eab1d24b54ba6120e6f458398d, type: 3}
       propertyPath: m_LocalPosition.z
@@ -112,6 +116,10 @@ PrefabInstance:
       propertyPath: enemy
       value: 
       objectReference: {fileID: -2841713623312926738}
+    - target: {fileID: 8851053188755381629, guid: 288fe8eab1d24b54ba6120e6f458398d, type: 3}
+      propertyPath: layerMask.m_Bits
+      value: 14336
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -125,17 +133,6 @@ Animator:
   m_CorrespondingSourceObject: {fileID: 9079293851372353236, guid: 288fe8eab1d24b54ba6120e6f458398d, type: 3}
   m_PrefabInstance: {fileID: 4836070000314328341}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &5882453647875305130 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1350939597213158335, guid: 288fe8eab1d24b54ba6120e6f458398d, type: 3}
-  m_PrefabInstance: {fileID: 4836070000314328341}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 073797afb82c5a1438f328866b10b3f0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!212 &6760828553357187390 stripped
 SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 2219823495939161131, guid: 288fe8eab1d24b54ba6120e6f458398d, type: 3}
@@ -160,10 +157,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   anim: {fileID: 4403691050469118913}
   spr: {fileID: 6760828553357187390}
+  unlitMaterial: {fileID: 2100000, guid: 9dfc825aed78fcd4ba02077103263b40, type: 2}
+  litMaterial: {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   enemySpeed: 5
   view: {fileID: 7780400340396059865}
   rotateSpeed: 100
-  circleLight: {fileID: 5882453647875305130}
   impulseSource: {fileID: 7938029064995026999}
   currentHeadingNodeIndex: 0
   reverse: 1

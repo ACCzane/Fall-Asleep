@@ -14,8 +14,8 @@ public class DetectPlayer : MonoBehaviour
 
     private void FindPlayer(Transform transform){
         //enemy注册Player的Transform
-        enemy.TargetPlayer(transform);
+        enemy.Target(transform);
         //enemy通知stateMachine进入Found状态
-        enemy.ChangeState(EnemyState.Found);
+        enemy.ChangeState(EnemyState.FoundPlayer);
     }
 }

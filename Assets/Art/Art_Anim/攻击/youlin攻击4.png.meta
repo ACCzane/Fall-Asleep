@@ -159,7 +159,9 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      "youlin\u653B\u51FB4_0": -3888893479391659485
+      "youlin\u653B\u51FB4_1": -1462742443004802537
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

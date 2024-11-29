@@ -7,18 +7,18 @@ public class Attack : MonoBehaviour
 
     [SerializeField] private float chaseTime = 1f;
 
-    private void OnEnable() {
-        EventHandler.FindPlayer += OnFindPlayer;
-    }
+    // private void OnEnable() {
+    //     EventHandler.FindPlayer += OnFindPlayer;
+    // }
 
-    private void OnDisable() {
-        EventHandler.FindPlayer -= OnFindPlayer;
-    }
+    // private void OnDisable() {
+    //     EventHandler.FindPlayer -= OnFindPlayer;
+    // }
 
-    private void OnFindPlayer(Transform transform)
-    {
-        StartCoroutine(AttackTarget(transform));
-    }
+    // private void OnFindPlayer(Transform transform)
+    // {
+    //     StartCoroutine(AttackTarget(transform));
+    // }
 
     /// <summary>
     /// 鬼魂发现玩家后直接飞到玩家头顶，然后播放动画，玩家逃不掉（速度再快也没用）

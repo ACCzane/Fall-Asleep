@@ -4,10 +4,16 @@ using UnityEngine.Rendering.Universal;
 
 public abstract class Enemy : MonoBehaviour
 {
-
+    #region 引用
     [SerializeField] protected Animator anim;
-
-    protected EnemyStateMachine stateMachine;   //初始化在具体类中实现!
+    public Animator Anim{
+        get{
+            return anim;
+        }
+        set{
+            anim = value;
+        }
+    }
     [SerializeField] protected SpriteRenderer spr;
     public SpriteRenderer Spr{
         get{
@@ -17,6 +23,10 @@ public abstract class Enemy : MonoBehaviour
             spr = value;
         }
     }
+    
+    [SerializeField] protected Material unlitMaterial;
+    [SerializeField] protected Material litMaterial;
+    #endregion
 
     #region 移动
     [Header("参数")]
@@ -48,30 +58,59 @@ public abstract class Enemy : MonoBehaviour
     }
     #endregion
 
-    #region 找到玩家相关
-    protected Transform playerTransform;
-    public Transform PlayerTransform{
+    #region 找到玩家/物体相关
+    protected Transform targetTransform;
+    public Transform TargetTransform{
         get{
-            return playerTransform;
+            return targetTransform;
         }
         protected set{
-            playerTransform = value;
+            targetTransform = value;
         }
     }
     #endregion
 
-    #region 光照相关
-    [SerializeField] private Light2D circleLight;
-    public Light2D CircleLight{
-        get{
-            return circleLight;
+    // #region 光照相关
+    // [SerializeField] private Light2D circleLight;
+    // public Light2D CircleLight{
+    //     get{
+    //         return circleLight;
+    //     }
+    //     protected set{
+    //         circleLight = value;
+    //     }
+    // }
+    // public bool lightOn;
+    // #endregion
+
+    #region 状态相关
+    protected EnemyStateMachine stateMachine;   //初始化在具体类中实现!
+
+    protected NightStat nightStat;
+
+    #endregion
+
+    private void OnEnable() {
+        EventHandler.NightFall += OnNightFall;
+    }
+
+    private void OnDisable() {
+        EventHandler.NightFall -= OnNightFall;
+    }
+
+    private void OnNightFall()
+    {
+        if(nightStat == NightStat.Normal){
+            spr.material = litMaterial;
         }
-        protected set{
-            circleLight = value;
+        if(nightStat == NightStat.Tired){
+            spr.material = unlitMaterial;
+            spr.color = new Color(1,1,1,0.3f);
+        }
+        if(nightStat == NightStat.Drunk){
+        
         }
     }
-    public bool lightOn;
-    #endregion
 
     public void ChangeState(EnemyState enemyState){
         if(enemyState == EnemyState.Move){
@@ -86,18 +125,26 @@ public abstract class Enemy : MonoBehaviour
             stateMachine.ChangeState(new ResetViewState());
             return;
         }
-        if(enemyState == EnemyState.Found){
-            stateMachine.ChangeState(new FoundState());
+        if(enemyState == EnemyState.FoundPlayer){
+            stateMachine.ChangeState(new FoundPlayerState());
+            return;
+        }
+        if(enemyState == EnemyState.FoundFixedTank){
+            stateMachine.ChangeState(new FoundTankFixedState());
             return;
         }
     }
 
-    public void TargetPlayer(Transform transform){
-        PlayerTransform = transform;
+    public void Target(Transform transform){
+        TargetTransform = transform;
     }
 
     public void DestroySelf(){
         Destroy(gameObject);
+    }
+
+    public void UpdateNightStat(NightStat nightStat){
+        this.nightStat = nightStat;
     }
 
     #region CinemachineImpulse

@@ -205,7 +205,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 5163491660826332259}
   playerHold: {fileID: 5375762630377789850}
-  playerSpeed: 5
+  playerSpeed: 10
 --- !u!114 &7816410318191258968
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -333,7 +333,7 @@ MonoBehaviour:
   m_Intensity: 0.2
   m_LightVolumeIntensity: 1
   m_LightVolumeEnabled: 0
-  m_ApplyToSortingLayers: 00000000717b86b5
+  m_ApplyToSortingLayers: 00000000717b86b56dd8b8a67bb07c5e
   m_LightCookieSprite: {fileID: 0}
   m_DeprecatedPointLightCookieSprite: {fileID: 0}
   m_LightOrder: 0
@@ -354,7 +354,7 @@ MonoBehaviour:
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0
-  m_PointLightOuterRadius: 3
+  m_PointLightOuterRadius: 5
   m_ShapeLightParametricSides: 5
   m_ShapeLightParametricAngleOffset: 0
   m_ShapeLightParametricRadius: 1
@@ -440,8 +440,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -1249477775
-  m_SortingLayer: 1
+  m_SortingLayerID: -1497835411
+  m_SortingLayer: 2
   m_SortingOrder: 10
   m_Sprite: {fileID: -3348486076842386866, guid: f205b9118fd05e1478aa1af7ad028fe3, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

@@ -154,17 +154,6 @@ Animator:
   m_CorrespondingSourceObject: {fileID: 9079293851372353236, guid: 288fe8eab1d24b54ba6120e6f458398d, type: 3}
   m_PrefabInstance: {fileID: 4668879250537739349}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &5941567970988277738 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1350939597213158335, guid: 288fe8eab1d24b54ba6120e6f458398d, type: 3}
-  m_PrefabInstance: {fileID: 4668879250537739349}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 073797afb82c5a1438f328866b10b3f0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!212 &6774914966353512574 stripped
 SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 2219823495939161131, guid: 288fe8eab1d24b54ba6120e6f458398d, type: 3}
@@ -189,10 +178,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   anim: {fileID: 4524729313250083457}
   spr: {fileID: 6774914966353512574}
+  unlitMaterial: {fileID: 2100000, guid: 9dfc825aed78fcd4ba02077103263b40, type: 2}
+  litMaterial: {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   enemySpeed: 5
   view: {fileID: 7507381937962778009}
   rotateSpeed: 20
-  circleLight: {fileID: 5941567970988277738}
   impulseSource: {fileID: 7926220563001370999}
   roundingView: {fileID: 11400000, guid: a1cc7b646f5f71142a6f23c9096f3bb1, type: 2}
 --- !u!4 &7507381937962778009 stripped

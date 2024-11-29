@@ -13,7 +13,8 @@ GameObject:
   - component: {fileID: 7252264803282267550}
   - component: {fileID: 8226521660118281454}
   - component: {fileID: 200966732079897588}
-  m_Layer: 0
+  - component: {fileID: 5814224207542164952}
+  m_Layer: 12
   m_Name: Grave
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -129,6 +130,33 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1.5956302, y: 1.6551926}
   m_EdgeRadius: 0
+--- !u!50 &5814224207542164952
+Rigidbody2D:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 989722265182123918}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &6295645507357073618
 GameObject:
   m_ObjectHideFlags: 0
@@ -139,7 +167,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4908056149286106379}
   - component: {fileID: 8188555895181061413}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Visual
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -202,8 +230,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -1249477775
+  m_SortingLayer: 1
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 54841f26bf692364388ff87617915fb4, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

@@ -19,11 +19,16 @@ public class Bed : MonoBehaviour, IInteractable
     }
 
     private void OnEnable() {
-        EventHandler.Sleep += OnSleep;
+        EventHandler.NightFall += OnNightFall;
     }
 
     private void OnDisable() {
-        EventHandler.Sleep -= OnSleep;
+        EventHandler.NightFall -= OnNightFall;
+    }
+
+    private void OnNightFall()
+    {
+        canInteract = false;
     }
 
     public void OnTriggerEnter2D(Collider2D other) {
@@ -49,17 +54,16 @@ public class Bed : MonoBehaviour, IInteractable
         }
     }
 
-    private void OnSleep()
-    {
-        canInteract = false;
-    }
-
     public void Interact(){
-        EventHandler.CallSleep();
+
+        if(GameManager.Singleton.IsNight()){
+            //晚上不能上床
+            return;
+        }
 
         if(canInteract)
         {
-            bedSpr.sprite = playerInBed;
+            EventHandler.CallSleep();
         }
     }
 

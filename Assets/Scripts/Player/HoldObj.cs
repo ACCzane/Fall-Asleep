@@ -26,4 +26,9 @@ public class HoldObj : MonoBehaviour
 
     }
 
+    private void Update() {
+        //
+        // Debug.Log(holdingObj);
+    }
+
 }

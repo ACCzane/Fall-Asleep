@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Martian_Soil1_0: 7674728053414753235
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

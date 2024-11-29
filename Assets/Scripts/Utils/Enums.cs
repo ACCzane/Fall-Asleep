@@ -11,7 +11,8 @@ public enum EnemyState{
     Move,
     Alert,
     ResetView,
-    Found
+    FoundPlayer,
+    FoundFixedTank
 }
 
 public enum InteractType{
@@ -20,7 +21,8 @@ public enum InteractType{
     Null            //表示当前按“E”无效
 }
 
-public enum TimePeriod{
-    Day,
-    Night
+public enum NightStat{
+    Normal,
+    Tired,
+    Drunk
 }

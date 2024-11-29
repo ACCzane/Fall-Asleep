@@ -45,6 +45,7 @@ public class PlayerControl : MonoBehaviour
 
         EventHandler.Sleep += OnSleep;
         EventHandler.Hide += OnHide;
+        EventHandler.NightFall += OnNightFall;
     }
 
     private void OnDisable() {
@@ -56,8 +57,9 @@ public class PlayerControl : MonoBehaviour
 
         EventHandler.Sleep -= OnSleep;
         EventHandler.Hide -= OnHide;
+        EventHandler.NightFall -= OnNightFall;
     }
-    
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -67,6 +69,8 @@ public class PlayerControl : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // Debug.Log(currentInteractableTarget);
+
         playerMovement = playerInput.Player.Move.ReadValue<Vector2>();
 
         MovePlayer();
@@ -113,15 +117,6 @@ public class PlayerControl : MonoBehaviour
 
     private void OnInteractButtonPressed(UnityEngine.InputSystem.InputAction.CallbackContext context)
     {
-        // if(currentActivatedInteractType == InteractType.Null){
-        //     return;
-        // }
-        // if(currentActivatedInteractType == InteractType.Hide){
-        //     EventHandler.CallHide();
-        // }
-        // if(currentActivatedInteractType == InteractType.Sleep){
-        //     EventHandler.CallSleep();
-        // }
         if(currentInteractableTarget == null){
             return;
         }
@@ -130,6 +125,11 @@ public class PlayerControl : MonoBehaviour
 
     private void OnPickButtonPressed(UnityEngine.InputSystem.InputAction.CallbackContext context)
     {
+        //如果是幽灵形态
+        if(isGhost){
+            //无法再拾取
+            return;
+        }
 
         //如果没有可交互物体，返回
         if(playerHold.currentTargetObj == null){
@@ -165,5 +165,13 @@ public class PlayerControl : MonoBehaviour
     private void OnHide()
     {
         isHiding = !isHiding;
+    }
+
+    private void OnNightFall()
+    {
+        //如果手上还有物品，丢弃手上的物品
+        if(playerHold.holdingObj!=null)
+            playerHold.holdingObj.Drop(playerHold);
+
     }
 }
