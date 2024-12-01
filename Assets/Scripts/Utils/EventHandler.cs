@@ -23,10 +23,16 @@ public static class EventHandler
         UseItemInHand?.Invoke();
     }
 
-    public static Action Attack;
-    public static void CallAttack(){
-        Attack?.Invoke();
+    public static Action GainCoin;
+    public static void CallGainCoin(){
+        GainCoin?.Invoke();
     }
+
+    // public static Action Damage;
+    // public static void CallDamage(){
+    //     Damage?.Invoke();
+    // }
+
 
     public static Action<int> Countdown;
     public static void CallCountdown(int countdownValue){

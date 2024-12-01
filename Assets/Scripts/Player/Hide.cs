@@ -19,10 +19,18 @@ public class Hide : MonoBehaviour
 
     private void OnEnable() {
         EventHandler.Hide += OnHide;
+        EventHandler.NightFall += OnNightFall;
     }
 
     private void OnDisable() {
         EventHandler.Hide -= OnHide;
+        EventHandler.NightFall -= OnNightFall;
+    }
+
+    private void OnNightFall()
+    {
+        //如果躲在柜子里等天黑，出来，不然有Bug，玩家不能移动
+        IsHiding = false;
     }
 
     private void OnHide()
@@ -75,5 +83,13 @@ public class Hide : MonoBehaviour
         }else{
             hideButtonRenderer.enabled = false;
         }
+    }
+
+    public void DisablePlayerSpr(){
+        playerBodySpriteRenderer.enabled = false;
+    }
+
+    public void EnablePlayerSpr(){
+        playerBodySpriteRenderer.enabled = true;
     }
 }

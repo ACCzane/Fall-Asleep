@@ -124,7 +124,7 @@ MonoBehaviour:
   outPos: {x: 0, y: 0.3}
   bedSpr: {fileID: 2334356609859387310}
   emptyBed: {fileID: 21300000, guid: 306eebb950b58d74f89731c4199b923f, type: 3}
-  playerInBed: {fileID: 21300000, guid: 58f0ffbae06ae79498a4b1cf1978f43e, type: 3}
+  playerInBed: {fileID: -8551994131419166597, guid: 048a67b8f9defac4399a76a8aaa639cf, type: 3}
 --- !u!1 &8122111873626672906
 GameObject:
   m_ObjectHideFlags: 0

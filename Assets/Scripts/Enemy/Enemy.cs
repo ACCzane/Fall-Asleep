@@ -26,6 +26,8 @@ public abstract class Enemy : MonoBehaviour
     
     [SerializeField] protected Material unlitMaterial;
     [SerializeField] protected Material litMaterial;
+    [SerializeField] protected AudioSource audioSource;
+    [SerializeField] protected AudioClip attackClip;
     #endregion
 
     #region 移动
@@ -69,6 +71,9 @@ public abstract class Enemy : MonoBehaviour
         }
     }
     #endregion
+    #region 攻击相关
+    [SerializeField] protected int damage;
+    #endregion
 
     // #region 光照相关
     // [SerializeField] private Light2D circleLight;
@@ -86,7 +91,7 @@ public abstract class Enemy : MonoBehaviour
     #region 状态相关
     protected EnemyStateMachine stateMachine;   //初始化在具体类中实现!
 
-    protected NightStat nightStat;
+    protected NightStat nightStat = NightStat.Normal;
 
     #endregion
 
@@ -100,16 +105,16 @@ public abstract class Enemy : MonoBehaviour
 
     private void OnNightFall()
     {
-        if(nightStat == NightStat.Normal){
-            spr.material = litMaterial;
-        }
-        if(nightStat == NightStat.Tired){
-            spr.material = unlitMaterial;
-            spr.color = new Color(1,1,1,0.3f);
-        }
-        if(nightStat == NightStat.Drunk){
+        // if(nightStat == NightStat.Normal){
+        //     spr.material = litMaterial;
+        // }
+        // if(nightStat == NightStat.Tired){
+        //     spr.material = unlitMaterial;
+        //     spr.color = new Color(1,1,1,0.3f);
+        // }
+        // if(nightStat == NightStat.Drunk){
         
-        }
+        // }
     }
 
     public void ChangeState(EnemyState enemyState){
@@ -139,13 +144,28 @@ public abstract class Enemy : MonoBehaviour
         TargetTransform = transform;
     }
 
-    public void DestroySelf(){
-        Destroy(gameObject);
-    }
+    // public void DestroySelf(){
+    //     Destroy(gameObject);
+    // }
 
     public void UpdateNightStat(NightStat nightStat){
         this.nightStat = nightStat;
     }
+
+    public void Attack(PlayerStat health){
+        Debug.Log("Attack");
+        health.Damage(damage);
+    }
+
+    public void PlayAttackSound(){
+        if(!audioSource.isPlaying){
+            audioSource.PlayOneShot(attackClip);
+        }
+        
+        // Debug.Log("PlayOneShot");
+    }
+
+    public abstract void DespawnSelf();
 
     #region CinemachineImpulse
     [SerializeField] protected CinemachineImpulseSource impulseSource;

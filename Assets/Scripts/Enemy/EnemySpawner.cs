@@ -3,11 +3,10 @@ using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
 {
-    [SerializeField] private GameObject enemyPrefab;
+    [SerializeField] private GameObject enemySoldiorPrefab;
     [SerializeField] private MovePath movePath;
     [SerializeField] private float rebirthCD = 2f;
 
-    private bool enemyLightOn = true;
 
     private Enemy_Soldior enemy_Soldior;
     public Enemy_Soldior Enemy_Soldior{
@@ -31,7 +30,7 @@ public class EnemySpawner : MonoBehaviour
 
     private void OnNightFall()
     {
-        enemyLightOn = false;
+        // enemyLightOn = false;
     }
 
     public Enemy GenEnemy(bool lightOn){
@@ -39,20 +38,20 @@ public class EnemySpawner : MonoBehaviour
         if(!canGenEnemy){return null;}
 
         if(enemy_Soldior != null){
-            enemy_Soldior.Initialize(movePath, this, lightOn);       //重新初始化，敌人位置，状态改变
+            enemy_Soldior.Initialize(movePath, this);       //重新初始化，敌人位置，状态改变
             return enemy_Soldior;
         }
 
-        GameObject enemyGO = Instantiate(enemyPrefab);
+        GameObject enemyGO = Instantiate(enemySoldiorPrefab);
         enemy_Soldior = enemyGO.GetComponent<Enemy_Soldior>();
-        enemy_Soldior.Initialize(movePath, this, lightOn);
+        enemy_Soldior.Initialize(movePath, this);
 
         return enemy_Soldior;
     }
 
-    public void EnemyRebirth(){
-        StartCoroutine(EnemyRibirthAsync());
-    }
+    // public void EnemyRebirth(){
+    //     StartCoroutine(EnemyRibirthAsync());
+    // }
 
     private IEnumerator EnemyRibirthAsync(){
         float elapsedTime = 0;
@@ -63,9 +62,20 @@ public class EnemySpawner : MonoBehaviour
 
         if(!canGenEnemy){yield break;}
 
-        if(enemy_Soldior != null){Debug.Log("该路线上的敌人已存在"); yield break;}
+        if(enemy_Soldior.isActiveAndEnabled){Debug.Log("该路线上的敌人已存在"); yield break;}
 
-        GenEnemy(enemyLightOn);
+        // GenEnemy(enemyLightOn);
+        // enemy_Soldior.transform.position = movePath.PosNodes[0];
+        // enemy_Soldior.ChangeState(EnemyState.Move);
+        enemy_Soldior.Initialize();
+        enemy_Soldior.gameObject.SetActive(true);
+        
+    }
+
+    public void DespawnEnemy(){
+        enemy_Soldior.gameObject.SetActive(false);
+
+        StartCoroutine(EnemyRibirthAsync());
     }
 
     //鬼魂执行攻击动作

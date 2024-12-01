@@ -34,6 +34,7 @@ public class FoundTankFixedState : IStateBase
     public void Exit(Enemy enemy)
     {
         // throw new System.NotImplementedException();
+        enemy.View.gameObject.SetActive(true);
     }
 
     public void Update(Enemy enemy)

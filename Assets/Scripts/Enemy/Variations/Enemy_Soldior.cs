@@ -23,6 +23,20 @@ public class Enemy_Soldior : Enemy
         reverse = 1;
     }
 
+    private void OnEnable() {
+        EventHandler.NightFall += OnNightFall;
+    }
+
+    private void OnDisable() {
+        EventHandler.NightFall -= OnNightFall;
+    }
+
+    private void OnNightFall()
+    {
+        stateMachine.currentState.Exit(this);
+        ChangeState(EnemyState.Move);
+    }
+
     private void Update()
     {
         stateMachine.Update(); // 更新状态
@@ -68,7 +82,19 @@ public class Enemy_Soldior : Enemy
                 //如果该状态进度条已满(动作执行完毕)
                 
                 //通知Spawner重新生成一个（会有等待时间）
-                enemySpawner.EnemyRebirth();
+
+                // enemySpawner.EnemyRebirth();
+                
+                // throw new System.NotImplementedException();
+                GenImpulse();
+
+                Attack(targetTransform.GetComponent<PlayerStat>());
+
+                // EnemyManager.Singleton.RemoveEnemy(enemy);
+
+                Anim.SetBool("IsAttack", false);
+
+                DespawnSelf();
                 
                 //执行攻击动画
                 // anim.SetBool("IsRight", (stateMachine.currentState as FoundPlayerState).isFacingRight);
@@ -92,14 +118,7 @@ public class Enemy_Soldior : Enemy
         this.PosNodes = movePath.GetPos();
     }
 
-    public void Initialize(MovePath movePath, EnemySpawner enemySpawner, bool lightOn){
-
-        // this.lightOn = lightOn;
-        // if(!lightOn){
-        //     CircleLight.gameObject.SetActive(false);
-        // }else{
-        //     CircleLight.gameObject.SetActive(true);
-        // }
+    public void Initialize(MovePath movePath, EnemySpawner enemySpawner){
 
         reverse = 1;
 
@@ -113,6 +132,18 @@ public class Enemy_Soldior : Enemy
         
         currentHeadingNodeIndex = 0;                //currentHeadingNode决定了往哪走，在MoveState中的Enter读取本文件的currentHeadingNode
         ChangeState(EnemyState.ResetView); // 初始状态
+    }
+
+    public void Initialize(){
+        reverse = 1;
+        transform.position = PosNodes[0];
+        
+        currentHeadingNodeIndex = 0;
+        ChangeState(EnemyState.ResetView);
+    }
+
+    public override void DespawnSelf(){
+        enemySpawner.DespawnEnemy();
     }
 
 }

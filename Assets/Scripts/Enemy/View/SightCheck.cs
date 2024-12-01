@@ -35,6 +35,11 @@ public class SightCheck : MonoBehaviour
             // 检查射线是否击中玩家
             if (hit.collider != null && hit.collider.CompareTag("Player")) {
 
+                if(!other.TryGetComponent<Hide>(out Hide hide)){
+                    //游戏本身没发现逻辑bug，但是编辑器报错
+                    return;
+                }
+
                 if(!other.GetComponent<Hide>().IsHiding){
                     //如果玩家没躲藏
 

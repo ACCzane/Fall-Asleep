@@ -9,11 +9,24 @@ public class HoldObj : MonoBehaviour
     public IInteractable interactableObj;
     private bool isHolding;
 
+    public bool canHold = true;
+
+    private void Start() {
+        canHold = true;
+    }
+
     private void OnEnable() {
         EventHandler.UseItemInHand += OnUseItemInHand; 
+        EventHandler.NightFall += OnNightFall;
     }
     private void OnDisable() {
         EventHandler.UseItemInHand -= OnUseItemInHand;
+        EventHandler.NightFall -= OnNightFall;
+    }
+
+    private void OnNightFall()
+    {
+        canHold = false;
     }
 
     private void OnUseItemInHand()

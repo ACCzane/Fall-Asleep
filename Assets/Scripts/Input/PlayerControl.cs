@@ -5,11 +5,17 @@ public class PlayerControl : MonoBehaviour
 {
     private PlayerInput playerInput;
 
+
+    [SerializeField] private Hide hide;     //无奈之举
+
+    [SerializeField] private PlayerAudio playerAudio;
+
+
     //移动
     private Vector2 playerMovement;
     private Vector2 previousPlayerMovement;
     private bool isMoving;              //用于传递给Animator
-    private bool isHiding;
+
 
     [SerializeField] private Animator animator;
     private float lastDeltaX;           //用于动画BlendTree状态的停留
@@ -43,8 +49,8 @@ public class PlayerControl : MonoBehaviour
         playerInput.Player.Pick.performed += OnPickButtonPressed;
         playerInput.Player.Drop.performed += OnDropButtonPressed;
 
-        EventHandler.Sleep += OnSleep;
-        EventHandler.Hide += OnHide;
+        // EventHandler.Sleep += OnSleep;
+
         EventHandler.NightFall += OnNightFall;
     }
 
@@ -55,8 +61,8 @@ public class PlayerControl : MonoBehaviour
         playerInput.Player.Pick.performed -= OnPickButtonPressed;
         playerInput.Player.Drop.performed -= OnDropButtonPressed;
 
-        EventHandler.Sleep -= OnSleep;
-        EventHandler.Hide -= OnHide;
+        // EventHandler.Sleep -= OnSleep;
+
         EventHandler.NightFall -= OnNightFall;
     }
 
@@ -70,6 +76,7 @@ public class PlayerControl : MonoBehaviour
     void Update()
     {
         // Debug.Log(currentInteractableTarget);
+        Debug.Log(playerInput);
 
         playerMovement = playerInput.Player.Move.ReadValue<Vector2>();
 
@@ -77,15 +84,9 @@ public class PlayerControl : MonoBehaviour
     }
 
     private void MovePlayer(){
-        if(isHiding){return;}
+        if(hide.IsHiding){return;}
 
-        //更改朝向（已改到Animator执行）
-        // if(playerMovement.x < -0.5){
-        //     transform.localScale = new Vector3(Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
-        // }
-        // if(playerMovement.x > 0.5){
-        //     transform.localScale = new Vector3(-Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
-        // }
+        
 
         if(Vector2.Distance(playerMovement, Vector2.zero) != 0){
             isMoving = true;
@@ -142,9 +143,11 @@ public class PlayerControl : MonoBehaviour
             if(playerHold.holdingObj != null){
                 //先丢出去
                 playerHold.holdingObj.Drop(playerHold);
+                playerAudio.PlayDrop();
             }
             //如果当前手上没有物体
             playerHold.currentTargetObj.Pick(playerHold);
+            playerAudio.PlayPick();
         }
     }
 
@@ -155,17 +158,13 @@ public class PlayerControl : MonoBehaviour
             return;
         }
         playerHold.holdingObj.Drop(playerHold);
+        playerAudio.PlayDrop();
     }
 
-    private void OnSleep()
-    {
-        isGhost = true;           
-    }
-
-    private void OnHide()
-    {
-        isHiding = !isHiding;
-    }
+    // private void OnSleep()
+    // {
+    //     isSleeping = true;           
+    // }
 
     private void OnNightFall()
     {

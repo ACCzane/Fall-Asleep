@@ -15,6 +15,8 @@ public abstract class PicakableObjectBase : MonoBehaviour, IPickable
 
     public void Pick(HoldObj playerHold)
     {
+        if(!playerHold.canHold){return;}
+        
         playerHold.holdingObj = this;
         coll.enabled = false;
         SetTransformParent(playerHold.holdAnchor);

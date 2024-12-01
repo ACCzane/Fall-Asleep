@@ -27,17 +27,28 @@ public class Enemy_Guard : Enemy
             if((stateMachine.currentState as FoundPlayerState).finished){
                 //如果该状态进度条已满(动作执行完毕)
                 
-                //执行攻击动画
-                anim.SetBool("IsRight", (stateMachine.currentState as FoundPlayerState).isFacingRight);
-                anim.SetTrigger("Attack");
-                // Destroy(gameObject);
-                
+                GenImpulse();
+
+                Attack(targetTransform.GetComponent<PlayerStat>());
+
+                // EnemyManager.Singleton.RemoveEnemy(enemy);
+
+                Anim.SetBool("IsAttack", false);
+
+                DespawnSelf();
+
+
             }
         }
     }
 
     public void Initialize(){
         stateMachine.ChangeState(new AlertState(roundingView.eulerAngles_z));
+    }
+
+    public override void DespawnSelf()
+    {
+        Destroy(gameObject);
     }
 
     // public void TargetPlayer(Transform transform){

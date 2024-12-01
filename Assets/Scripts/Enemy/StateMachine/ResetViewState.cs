@@ -12,6 +12,9 @@ public class ResetViewState : IStateBase
 
     public void Enter(Enemy enemy)
     {
+
+        enemy.View.gameObject.SetActive(true);
+
         enemy_Soldior = enemy as Enemy_Soldior;
 
         Debug.Log(enemy_Soldior + " " + enemy_Soldior.currentHeadingNodeIndex + " " + enemy_Soldior.PosNodes.Count);

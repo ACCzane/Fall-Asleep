@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Rendering.Universal;
 
 public class Tank : MonoBehaviour, IInteractable
 {
@@ -17,6 +18,9 @@ public class Tank : MonoBehaviour, IInteractable
     [SerializeField] private SpriteRenderer tankSpr;
     [SerializeField] private Sprite tankBrokenSp;
     [SerializeField] private Sprite tankNotBrokenSp;
+
+    [SerializeField] private GameObject lightSrc;
+
     public void Interact()
     {
         if(isBroken && holdObj.holdingObj is Battery){
@@ -49,11 +53,15 @@ public class Tank : MonoBehaviour, IInteractable
         tankSpr.sprite = tankNotBrokenSp;
         tankSpr.color = Color.green;        //先用颜色代替
         isBroken = false;
+
+        lightSrc.SetActive(true);
     }
 
     public void BreakTank(){
         tankSpr.sprite = tankBrokenSp;
         tankSpr.color = Color.white;        //先用颜色代替
         isBroken = true;
+
+        lightSrc.SetActive(false);
     }
 }

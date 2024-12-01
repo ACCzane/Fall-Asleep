@@ -46,8 +46,9 @@ public class EnemyManager : MonoBehaviour
         }
     }
 
-    public void RemoveEnemy(Enemy enemy){
-        ghostSoldiors.Remove(enemy);
-        Destroy(enemy.gameObject);
-    }
+    // public void RemoveEnemy(Enemy enemy){
+    //     ghostSoldiors.Remove(enemy);
+    //     // Destroy(enemy.gameObject);
+
+    // }
 }

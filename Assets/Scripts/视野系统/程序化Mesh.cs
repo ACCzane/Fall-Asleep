@@ -55,11 +55,14 @@ public class 程序化Mesh : MonoBehaviour
             _uvs[i + 1] = new Vector2(direction.x, direction.z) * lerp + _uvs[0];
         }
 
-        _mesh.Clear();
-        _mesh.vertices = _vertices;
-        _mesh.triangles = _triangles;
-        _mesh.uv = _uvs;
-        _mesh.RecalculateNormals();
+        if(_mesh != null)
+        {
+            _mesh.Clear();
+            _mesh.vertices = _vertices;
+            _mesh.triangles = _triangles;
+            _mesh.uv = _uvs;
+            _mesh.RecalculateNormals();
+        }
 
         _meshFilter.mesh = _mesh;
     }

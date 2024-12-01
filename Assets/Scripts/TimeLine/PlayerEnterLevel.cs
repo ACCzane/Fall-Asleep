@@ -3,7 +3,17 @@ using UnityEngine;
 public class PlayerEnterLevel : MonoBehaviour
 {
     [SerializeField] private Vector3 entryPos_1;
+    public Vector3 EntryPos_1{
+        get{
+            return entryPos_1;
+        }
+    }
     [SerializeField] private Vector3 entryPos_2;
+    public Vector3 EntryPos_2{
+        get{
+            return entryPos_2;
+        }
+    }
 
     [SerializeField] private PlayerControl playerControl;
 
@@ -23,7 +33,7 @@ public class PlayerEnterLevel : MonoBehaviour
     public void StartPlayerEnterLevel(){
         isPlayerEntering = true;
 
-        playerControl.transform.position = entryPos_1;
+        SetPlayerPosToEntry();
     }
 
     public void UpdatePlayerPos(){
@@ -32,6 +42,10 @@ public class PlayerEnterLevel : MonoBehaviour
         }
        
         playerControl.transform.Translate(moveDir * playerControl.PlayerSpeed * Time.deltaTime ,Space.World);
+    }
+
+    public void SetPlayerPosToEntry(){
+        playerControl.transform.position = entryPos_1;
     }
 
     private void OnDrawGizmosSelected() {

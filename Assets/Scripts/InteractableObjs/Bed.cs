@@ -64,6 +64,7 @@ public class Bed : MonoBehaviour, IInteractable
         if(canInteract)
         {
             EventHandler.CallSleep();
+            bedSpr.sprite = playerInBed;
         }
     }
 

@@ -31,13 +31,14 @@ public class FoundPlayerState : IStateBase
         originPos = enemy.transform.position;
 
         enemy.Anim.SetBool("IsRight", isFacingRight);
-        enemy.Anim.SetTrigger("Attack");
+        enemy.Anim.SetBool("IsAttack", true);
+
+        enemy.PlayAttackSound();
     }
 
     public void Exit(Enemy enemy)
     {
-        // throw new System.NotImplementedException();
-        EnemyManager.Singleton.RemoveEnemy(enemy);
+        
     }
 
     public void Update(Enemy enemy)
@@ -47,14 +48,15 @@ public class FoundPlayerState : IStateBase
         timeCounter += Time.deltaTime;
 
         Vector3 dir = (playerTransform.position - enemy.transform.position).normalized;
-        enemy.transform.Translate(dir * enemy.EnemySpeed*2 * Time.deltaTime, Space.World);
+        enemy.transform.Translate(dir * enemy.EnemySpeed*4 * Time.deltaTime, Space.World);
+        //测试为4倍速最合适
 
         isFacingRight = (playerTransform.position - enemy.transform.position).x > 0 ? true : false;
         enemy.Anim.SetBool("IsRight", isFacingRight);
 
         // spr.color = Color.Lerp(originColor, color_alpha0, timeCounter/timeDuration);
     
-        if(Vector3.Distance(playerTransform.position, enemy.transform.position) < 2f){
+        if(Vector3.Distance(playerTransform.position, enemy.transform.position) < 0.5f){
             //经测试，2f的值刚好
             // Debug.Log(Vector3.Distance(playerTransform.position, enemy.transform.position));
             finished = true;

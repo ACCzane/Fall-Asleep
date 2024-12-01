@@ -4,6 +4,11 @@ using UnityEngine;
 public class MovePath : MonoBehaviour
 {
     [SerializeField] private List<Vector2> posNodes = new List<Vector2>();
+    public List<Vector2> PosNodes{
+        get{
+            return posNodes;
+        }
+    }
 
     private void OnDrawGizmosSelected() {
         foreach (var pos in posNodes)
