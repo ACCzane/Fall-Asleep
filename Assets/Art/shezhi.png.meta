@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      shezhi_0: 8357175170753476354
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

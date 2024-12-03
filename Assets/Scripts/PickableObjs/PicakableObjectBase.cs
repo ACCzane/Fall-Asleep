@@ -31,16 +31,18 @@ public abstract class PicakableObjectBase : MonoBehaviour, IPickable
         if(other.tag == "Player"){
             HoldObj holdObj = other.GetComponent<HoldObj>();
             // Debug.Log("检测到玩家");
-            if(holdObj.currentTargetObj == null)
-                holdObj.currentTargetObj = this;
+            // if(holdObj.currentTargetObj == null)
+            holdObj.currentTargetObj = this;
+            Debug.Log(holdObj.currentTargetObj);
         }
     }
 
     protected void OnTriggerExit2D(Collider2D other) {
         if(other.tag == "Player"){
             HoldObj holdObj = other.GetComponent<HoldObj>();
-            if(holdObj.currentTargetObj != this as IInteractable)
-                holdObj.currentTargetObj = null;
+            // if(holdObj.currentTargetObj != this as IInteractable)
+            holdObj.currentTargetObj = null;
+            Debug.Log(holdObj.currentTargetObj);
         }
     }
 

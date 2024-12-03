@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      dianxiang_0: 5132210595483337632
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
